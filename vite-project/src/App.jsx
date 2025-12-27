@@ -3,7 +3,7 @@ import React from "react";
 import {  Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
-import DashboardLayout from './components/Layout/DashboardLayout';
+import DashboardLayout from './Components/Layout/DashboardLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminList from './pages/AdminList';
