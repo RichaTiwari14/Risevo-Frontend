@@ -101,7 +101,7 @@ import StatsCard from "../Components/Cards/StatsCard";
 import {
   EmployeeEnquiryChart,
   DepartmentChart,
-} from "../components/Charts/DashboardCharts";
+} from "../Components/Charts/DashboardCharts";
 import { Users, UserCog, MessageSquare, Clock } from "lucide-react";
 
 const Dashboard = () => {

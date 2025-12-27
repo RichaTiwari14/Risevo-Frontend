@@ -5,7 +5,7 @@ import {
   UpdateAdmin,
   DeleteAdmin,
 } from "../services/Services";
-import AdminModal from "../components/Modals/AdminModal";
+import AdminModal from "../Components/Modals/AdminModal";
 import { Search, Plus, Edit2, Trash2, UserCog } from "lucide-react";
 import toast from "react-hot-toast";
 

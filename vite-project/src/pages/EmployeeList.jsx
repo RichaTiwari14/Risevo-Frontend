@@ -191,7 +191,7 @@ import {
   UpdateEmployee,
   DeleteEmployee,
 } from "../services/Services";
-import EmployeeModal from "../components/Modals/EmployeeModal";
+import EmployeeModal from "../Components/Modals/EmployeeModal";
 import { Search, Plus, Edit2, Trash2, Users } from "lucide-react";
 import toast from "react-hot-toast";
 
