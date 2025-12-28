@@ -10,9 +10,10 @@ import AdminList from './pages/AdminList';
 import EmployeeList from './pages/EmployeeList';
 import EnquiryList from './pages/EnquiryList';
 import { useLocation } from "react-router-dom";
+// ✅ Header ko Nav ki jagah use kar rahe hain
+import Header from "./Components/Nav/Nav.jsx";
 
 import Home from "./Components/Home/Home.jsx";
-import Nav from "./Components/Nav/Nav.jsx";
 import Services from "./Components/Services/Services.jsx";
 import Residential from "./Components/Services/Residential.jsx";
 import Commercial from "./Components/Services/Commercial.jsx";
@@ -47,12 +48,15 @@ import SpecializedPage from "./Components/Cards/Specialized.jsx";
 // Quality & Safety Standards full page
 import Quality from "./Components/Cards/Quality.jsx";
 
+// ✅ Foundation full page (ab route se open hoga)
+import Foundation from "./Components/About/Foundation.jsx";
+
 function App() {
-  const location = useLocation();
+    const location = useLocation();
 const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
 const shouldShowNav = !hideNavRoutes.includes(location.pathname);
   return (
-      <AuthProvider>
+     <AuthProvider>
         <Toaster 
           position="top-right"
           toastOptions={{
@@ -77,7 +81,10 @@ const shouldShowNav = !hideNavRoutes.includes(location.pathname);
           }}
         />
       {/* Nav sab pages me common rahega */}
-      {shouldShowNav && <Nav />}
+      {shouldShowNav && <Header />}
+
+      {/* Header sab pages me common rahega */}
+
       <Routes>
         {/* Home page */}
         <Route
@@ -85,10 +92,14 @@ const shouldShowNav = !hideNavRoutes.includes(location.pathname);
           element={
             <>
               <Home />
-              <Services />        {/* iske andar Services3D use kar sakte ho */}
+              <Services />        {/* Services overview section */}
               <VisionMission />
-              <Cards />           {/* 3 cards – jisme se ek /equipment pe le jayega */}
-              <About />           {/* About the Company + Meet our leadership CTA */}
+              <Cards />           {/* 3 cards – Equipment / Specialized / Quality */}
+              <About />           {/* About the Company, CTA to leadership */}
+
+              {/* ⛔ Foundation ko home se hata diya, ab /foundation page hai */}
+              {/* <Foundation /> */}
+
               <Testimonials />    {/* Client Testimonials */}
               <Gallery />         {/* Project Gallery – id="gallery" */}
               <Contact />         {/* Contact form section */}
@@ -105,7 +116,7 @@ const shouldShowNav = !hideNavRoutes.includes(location.pathname);
         <Route path="/infra" element={<Infrastructure />} />
 
         {/* Vision & Mission full pages */}
-        <Route path="/vision" element={<VisionPage />} />
+        <Route path="/vision" element={<VisionPage />} />hai 
         <Route path="/mission" element={<MissionPage />} />
 
         {/* Leadership / Directors page */}
@@ -119,7 +130,10 @@ const shouldShowNav = !hideNavRoutes.includes(location.pathname);
 
         {/* Quality & Safety Standards page */}
         <Route path="/quality" element={<Quality />} />
-         {/* Public Route */}
+
+        {/* ✅ Foundation ka naya route (Director jaise hi full page) */}
+        <Route path="/foundation" element={<Foundation />} />
+          {/* Public Route */}
           <Route path="/login" element={<Login />} />
           
           {/* Protected Routes */}
@@ -129,9 +143,8 @@ const shouldShowNav = !hideNavRoutes.includes(location.pathname);
             <Route path="/employee-list" element={<EmployeeList />} />
             <Route path="/enquiry-list" element={<EnquiryList />} />
           </Route>
-         
       </Routes>
-      </AuthProvider>
+    </AuthProvider>
   );
 }
 
