@@ -59,7 +59,7 @@ const ConstructionHighlights = () => {
             CORE CAPABILITIES
           </p>
           <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Equipment, Expertise &amp; Assurance
+            EQUIPMENT, EXPERTISE &amp; ASSURANCE
           </h2>
           <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
             Risevo integrates strong site resources, specialised execution and

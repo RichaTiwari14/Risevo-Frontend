@@ -9,7 +9,15 @@ const Header = () => {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <header
+      className="
+        fixed inset-x-0 top-0 z-50
+        w-full
+        border-b border-white/10
+        bg-black/80 backdrop-blur-md
+        overflow-x-hidden
+      "
+    >
       {/* Top bar */}
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo + name */}
@@ -99,7 +107,7 @@ const Header = () => {
             About
           </a>
 
-          {/* ✅ Foundation: ab alag page /foundation */}
+          {/* Foundation page */}
           <a
             href="/foundation"
             className="hover:text-amber-400 transition-colors"
@@ -107,7 +115,7 @@ const Header = () => {
             Foundation
           </a>
 
-          {/* ✅ Director: Leadership page /leadership */}
+          {/* Director / Leadership page */}
           <a
             href="/leadership"
             className="hover:text-amber-400 transition-colors"
@@ -269,7 +277,7 @@ const Header = () => {
               About
             </a>
 
-            {/* ✅ Foundation (mobile) -> /foundation */}
+            {/* Foundation (mobile) -> /foundation */}
             <a
               href="/foundation"
               onClick={closeMenu}
@@ -278,7 +286,7 @@ const Header = () => {
               Foundation
             </a>
 
-            {/* ✅ Director (mobile) -> /leadership */}
+            {/* Director (mobile) -> /leadership */}
             <a
               href="/leadership"
               onClick={closeMenu}
