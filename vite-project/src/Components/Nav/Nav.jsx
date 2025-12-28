@@ -98,13 +98,31 @@ const Header = () => {
           >
             About
           </a>
+
+          {/* ✅ Foundation: ab alag page /foundation */}
+          <a
+            href="/foundation"
+            className="hover:text-amber-400 transition-colors"
+          >
+            Foundation
+          </a>
+
+          {/* ✅ Director: Leadership page /leadership */}
+          <a
+            href="/leadership"
+            className="hover:text-amber-400 transition-colors"
+          >
+            Director
+          </a>
+
           <a
             href="/#testimonials"
             className="hover:text-amber-400 transition-colors"
           >
             Testimonials
           </a>
-          {/* NEW: Gallery link */}
+
+          {/* Gallery link */}
           <a
             href="/#gallery"
             className="hover:text-amber-400 transition-colors"
@@ -242,6 +260,7 @@ const Header = () => {
             >
               Turnkey
             </a>
+
             <a
               href="/#about"
               onClick={closeMenu}
@@ -249,6 +268,25 @@ const Header = () => {
             >
               About
             </a>
+
+            {/* ✅ Foundation (mobile) -> /foundation */}
+            <a
+              href="/foundation"
+              onClick={closeMenu}
+              className="block py-2 border-b border-white/10 hover:text-amber-400"
+            >
+              Foundation
+            </a>
+
+            {/* ✅ Director (mobile) -> /leadership */}
+            <a
+              href="/leadership"
+              onClick={closeMenu}
+              className="block py-2 border-b border-white/10 hover:text-amber-400"
+            >
+              Director
+            </a>
+
             <a
               href="/#testimonials"
               onClick={closeMenu}
@@ -256,7 +294,8 @@ const Header = () => {
             >
               Testimonials
             </a>
-            {/* NEW: Gallery link mobile */}
+
+            {/* Gallery link mobile */}
             <a
               href="/#gallery"
               onClick={closeMenu}
