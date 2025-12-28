@@ -27,7 +27,7 @@ import Gallery from "./Components/Services/Gallery.jsx";
 
 // Vision + Mission section on home
 import VisionMission from "./Components/Mission/Mission.jsx";
-import Cards from "./Components/Cards/Cards.jsx"; // 3 cards section (Equipment / etc)
+import Cards from "./Components/Cards/Cards.jsx"; 
 
 // Full pages for Vision & Mission
 import VisionPage from "./Components/Mission/Vision.jsx";
