@@ -43,7 +43,7 @@ const Contact = () => {
             CONTACT US
           </p>
           <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            LET'S DISCUSS YOUR NEXT CONSTRUCTION PROJECT
+            Let&apos;s Discuss Your Next Construction Project
           </h2>
           <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
             Share your requirements and our team will get back to you with

@@ -62,7 +62,7 @@ const Gallery = () => {
             PROJECT GALLERY
           </p>
           <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            WORK DONE WITH RESPONSIBILITY, FROM THE HEART
+            Work Done With Responsibility, From The Heart
           </h2>
           <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
             Every Risevo project is handled with{" "}

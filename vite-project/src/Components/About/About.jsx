@@ -41,7 +41,7 @@ const About = () => {
             </p>
 
             <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              RISEVO PROJECT &amp; DEVELOPERS
+              Risevo Construction &amp; Developers
             </h2>
 
             <p className="mt-4 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
@@ -63,7 +63,42 @@ const About = () => {
               our dedication to excellence, accountability and long‑term client
               satisfaction.
             </p>
-                   {/* CTA */}
+
+            {/* Foundation block (updated) */}
+            <div className="mt-4 rounded-2xl bg-slate-50/85 border border-slate-100 px-4 py-4 sm:py-5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                RISEVO FOUNDATION
+              </p>
+              <h3 className="mt-1 text-sm sm:text-base font-semibold text-slate-900">
+                Extending Our Impact Beyond Construction
+              </h3>
+              <p className="mt-2 text-[12px] sm:text-[13px] text-slate-600 leading-relaxed">
+                Alongside our core construction business, we actively run the{" "}
+                <span className="font-semibold">Risevo Foundation</span>, where
+                a dedicated portion of our earnings is used to support people
+                and communities in need.
+              </p>
+              <ul className="mt-2 space-y-1.5 text-[12px] sm:text-[13px] text-slate-600">
+                <li>• Educational assistance for underprivileged children.</li>
+                <li>
+                  • Support for families facing medical or financial hardship.
+                </li>
+                <li>
+                  • Community initiatives that improve day‑to‑day living
+                  conditions.
+                </li>
+              </ul>
+              <p className="mt-2 text-[12px] sm:text-[13px] text-slate-600 leading-relaxed">
+                We strongly believe that{" "}
+                <span className="font-semibold">
+                  growth must be shared with the society that supports it
+                </span>
+                , and the Foundation is our way of giving back in a structured,
+                responsible manner.
+              </p>
+            </div>
+
+            {/* CTA */}
             <motion.a
               href="/leadership"
               whileHover={{ x: 4 }}
