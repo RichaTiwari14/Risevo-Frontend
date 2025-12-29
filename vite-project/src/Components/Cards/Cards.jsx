@@ -1,7 +1,12 @@
 // src/Components/Equipment/ConstructionHighlights.jsx
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { FaCogs, FaProjectDiagram, FaShieldAlt } from "react-icons/fa";
+import {
+  FaCogs,
+  FaProjectDiagram,
+  FaShieldAlt,
+  FaTools,
+} from "react-icons/fa";
 
 const cards = [
   {
@@ -12,6 +17,8 @@ const cards = [
     icon: FaCogs,
     href: "/equipment",
     cta: "Explore Equipment & Team",
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    borderColor: "border-blue-200/50",
   },
   {
     id: "specialized",
@@ -21,6 +28,8 @@ const cards = [
     icon: FaProjectDiagram,
     href: "/specialized",
     cta: "View Specialized Works",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    borderColor: "border-purple-200/50",
   },
   {
     id: "quality-safety",
@@ -30,96 +39,131 @@ const cards = [
     icon: FaShieldAlt,
     href: "/quality",
     cta: "Learn Our Standards",
+    gradient: "from-green-500/20 to-emerald-500/20",
+    borderColor: "border-green-200/50",
+  },
+
+  {
+    id: "core-services",
+    badge: "CORE SERVICE • SURVEY & TESTING",
+    title: "Land Survey, Quality Check & Core Cutting",
+    desc: "Dedicated team for land survey, independent quality checking agency, RCC core cutting and repairing work – with detailed site photos and technical reports for full transparency.",
+    icon: FaTools,
+    href: "/land",
+    cta: "View Core Services ",
+    gradient: "from-amber-500/20 to-orange-500/20",
+    borderColor: "border-amber-200/50",
   },
 ];
 
 const ConstructionHighlights = () => {
-  return (
-    <section className="relative overflow-hidden bg-[#F5F7FB] py-16 sm:py-20">
-      {/* Simple fade-up animation (CSS only) */}
-      <style>{`
-        @keyframes chFadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+  const [hoveredCard, setHoveredCard] = useState(null);
 
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-100 py-20 sm:py-24">
       {/* Background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-56 w-56 rounded-full bg-sky-200/60 blur-3xl" />
-        <div className="absolute bottom-[-80px] right-[-80px] h-64 w-64 rounded-full bg-amber-200/60 blur-3xl" />
+        <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl opacity-60" />
+        <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-amber-100/30 blur-3xl opacity-60" />
+        <div className="absolute top-1/2 left-1/2 h-96 w-96 rounded-full bg-slate-200/20 blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <p className="inline-flex items-center justify-center rounded-full border border-sky-200/70 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-sky-900">
-            CORE CAPABILITIES
-          </p>
-          <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            EQUIPMENT, EXPERTISE &amp; ASSURANCE
+        {/* Heading Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center justify-center rounded-full border border-blue-300/50 bg-white px-4 py-1.5 mb-4">
+            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-700">
+              CORE CAPABILITIES
+            </span>
+          </div>
+          
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+            EQUIPMENT, EXPERTISE <span className="text-blue-600">&amp; ASSURANCE</span>
           </h2>
-          <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
-            Risevo integrates strong site resources, specialised execution and
-            disciplined quality practices to deliver end‑to‑end construction
-            solutions.
+          
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            Risevo integrates strong site resources, specialised execution and disciplined quality practices to deliver end‑to‑end construction solutions.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card, index) => {
+        {/* Cards Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((card) => {
             const Icon = card.icon;
+            const isHovered = hoveredCard === card.id;
 
             return (
               <article
                 key={card.id}
-                style={{
-                  animation: `chFadeUp 0.6s ease-out ${0.1 * index}s both`,
-                }}
-                className="
-                  flex h-full flex-col
-                  rounded-2xl bg-white/95 border border-slate-100
-                  shadow-[0_16px_50px_rgba(15,23,42,0.15)]
-                  p-5 sm:p-6
-                  transition-all duration-200
-                  hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(15,23,42,0.22)]
-                "
+                onMouseEnter={() => setHoveredCard(card.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`
+                  relative flex flex-col h-full
+                  rounded-2xl overflow-hidden
+                  border ${card.borderColor}
+                  bg-white backdrop-blur-sm
+                  shadow-lg shadow-slate-200/50
+                  p-6 sm:p-7
+                  transition-all duration-300 ease-out
+                  hover:shadow-xl hover:shadow-slate-300/60
+                  ${isHovered ? '-translate-y-2' : ''}
+                  group
+                `}
               >
-                {/* Icon + badge */}
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-700 border border-sky-100">
-                    <Icon className="h-5 w-5" />
+                {/* Background gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                
+                <div className="relative z-10">
+                  {/* Icon + Badge */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`
+                      flex h-12 w-12 items-center justify-center 
+                      rounded-xl border transition-all duration-300
+                      ${isHovered ? 'scale-110 shadow-lg' : 'shadow-md'}
+                      bg-gradient-to-br ${card.gradient}
+                    `}>
+                      <Icon className="h-6 w-6 text-slate-700" />
+                    </div>
                   </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">
                     {card.badge}
                   </p>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug">
+                    {card.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[13px] text-slate-600 leading-relaxed flex-1 mb-5">
+                    {card.desc}
+                  </p>
+
+                  {/* CTA Button */}
+                  <a
+                    href={card.href}
+                    className={`
+                      inline-flex items-center justify-center gap-2
+                      rounded-lg border border-slate-300
+                      px-4 py-2.5 text-[11px] font-bold
+                      uppercase tracking-[0.16em]
+                      bg-white text-slate-800
+                      shadow-md shadow-slate-200/40
+                      transition-all duration-300
+                      hover:bg-slate-900 hover:text-white
+                      hover:border-slate-900 hover:shadow-lg
+                      hover:shadow-slate-900/20
+                      group/btn
+                    `}
+                  >
+                    <span>{card.cta}</span>
+                    <FiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  </a>
                 </div>
 
-                <h3 className="mt-3 text-sm sm:text-base font-semibold text-slate-900">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-[12px] sm:text-[13px] text-slate-600 leading-relaxed flex-1">
-                  {card.desc}
-                </p>
-
-                {/* CTA – gap/letter-spacing thoda normal kar diya */}
-                <a
-                  href={card.href}
-                  className="
-                    mt-4 inline-flex items-center justify-center gap-2
-                    rounded-full border border-slate-300 bg-white
-                    px-4 py-2 text-[10px] sm:text-[11px]
-                    font-semibold uppercase tracking-[0.14em]
-                    text-slate-800 shadow-sm shadow-slate-200
-                    transition-all duration-200
-                    hover:bg-slate-900 hover:text-white hover:border-slate-900
-                    hover:translate-x-[2px]
-                  "
-                >
-                  <span>{card.cta}</span>
-                  <FiArrowRight className="h-3.5 w-3.5" />
-                </a>
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-full group-hover:translate-x-full duration-500" />
               </article>
             );
           })}

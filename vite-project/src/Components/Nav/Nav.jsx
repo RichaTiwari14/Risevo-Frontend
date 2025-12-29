@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Header = () => {
@@ -21,262 +22,239 @@ const Header = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-gradient-to-b from-black/95 to-black/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo Section - bada, but compact height */}
-        <a href="/" className="flex items-center gap-3 flex-shrink-0">
-          <div className="relative">
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-400/35 to-orange-500/20 rounded-full blur-xl opacity-70 scale-110" />
-            {/* Logo image */}
-            <div className="relative h-12 w-12 sm:h-13 sm:w-13 rounded-full border border-amber-400/50 overflow-hidden bg-black/70 shadow-lg shadow-amber-500/50">
+        {/* Logo Section */}
+        <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300 scale-110" />
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-xl border-2 border-amber-400/60 overflow-hidden bg-gradient-to-br from-black via-slate-900 to-black shadow-lg shadow-amber-500/30 group-hover:shadow-amber-400/50 transition-all duration-300">
               <img
                 src={logo}
                 alt="Risevo Construction Logo"
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
           <div className="hidden sm:flex flex-col leading-tight">
-            <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-amber-400">
+            <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-amber-400 group-hover:text-amber-300 transition-colors">
               RISEVO
             </p>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-300/80">
-              PROJECT &amp; DEVELOPERS
+            <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-amber-300/70 group-hover:text-amber-300 transition-colors">
+              PROJECT & DEVELOPERS
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-3 text-[13px]">
-          <a
-            href="/"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
+        <nav className="hidden lg:flex items-center gap-1 text-[13px]">
+          <Link
+            to="/"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
             HOME
-          </a>
+          </Link>
 
-          {/* Services Dropdown – CLICK ONLY */}
+          {/* Services Dropdown */}
           <div className="relative">
             <button
               type="button"
               onClick={toggleServices}
-              className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150 flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200 flex items-center gap-2"
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
-              <span>SERVICES
-              </span>
+              <span>SERVICES</span>
               <ChevronDown
                 size={16}
-                className={`transition-transform duration-200 ${
+                className={`transition-transform duration-300 ${
                   servicesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            {/* Dropdown Menu */}
             <div
               className={`
-                absolute left-0 mt-2 w-72 rounded-xl bg-black/98
-                border border-amber-400/30 shadow-2xl shadow-black/60
+                absolute left-0 mt-2 w-72 rounded-xl bg-black/95
+                border border-amber-400/40 shadow-2xl shadow-black/80
                 backdrop-blur-xl overflow-hidden
-                transition-all duration-200
+                transition-all duration-300
                 ${
                   servicesOpen
                     ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-1"
+                    : "opacity-0 invisible -translate-y-2"
                 }
               `}
             >
-              {/* Gradient top border */}
-              <div className="h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400/60 to-amber-400/0" />
-
-              <div className="py-1">
+              <div className="h-px bg-gradient-to-r from-amber-400/0 via-amber-400/60 to-amber-400/0" />
+              <div className="py-2">
                 {services.map((service, idx) => (
-                  <a
+                  <Link
                     key={service.href}
-                    href={service.href}
+                    to={service.href}
                     onClick={closeServices}
                     className={`
                       group flex items-center justify-between
-                      px-3.5 py-2.5 text-xs rounded-md transition-all duration-150
+                      px-4 py-2.5 text-xs rounded-lg transition-all duration-200
                       ${
                         idx === 0
-                          ? "bg-gradient-to-r from-amber-400/15 to-orange-500/15 text-amber-300 font-semibold border border-amber-400/30 mx-2 mt-1 mb-1"
-                          : "text-white/85 hover:text-amber-400 hover:bg-white/5 mx-1"
+                          ? "bg-gradient-to-r from-amber-400/20 to-orange-500/20 text-amber-300 font-semibold border border-amber-400/40 mx-2 my-1"
+                          : "text-white/80 hover:text-amber-400 hover:bg-white/8 mx-1"
                       }
                     `}
                   >
                     <span>{service.name}</span>
                     <ArrowRight
                       size={14}
-                      className="opacity-0 group-hover:opacity-100 text-amber-300 transition-opacity duration-150"
+                      className="opacity-0 group-hover:opacity-100 text-amber-300 transition-opacity duration-200"
                     />
-                  </a>
+                  </Link>
                 ))}
               </div>
-
-              {/* Gradient bottom border */}
-              <div className="h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400/50 to-amber-400/0" />
+              <div className="h-px bg-gradient-to-r from-amber-400/0 via-amber-400/50 to-amber-400/0" />
             </div>
           </div>
 
-          <a
-            href="/#about"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
+          <Link
+            to="/about"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
             ABOUT
-          </a>
+          </Link>
 
-          <a
-            href="/foundation"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
+          <Link
+            to="/foundation"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            
             FOUNDATION
-          </a>
+          </Link>
 
-          <a
-            href="/leadership"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
+          <Link
+            to="/leadership"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
             DIRECTOR
-          </a>
+          </Link>
 
-          <a
-            href="/#testimonials"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
+          {/* ✅ Gallery now goes to /gallery page */}
+          <Link
+            to="/gallery"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            
-            TESTIMONIALS
-          </a>
-
-          <a
-            href="/#gallery"
-            className="px-3 py-1.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all duration-150"
-          >GALLERY
-            
-          </a>
+            GALLERY
+          </Link>
         </nav>
 
         {/* Right Side: CTA + Mobile Menu */}
-        <div className="flex items-center gap-2">
-          {/* Desktop CTA Button */}
-          <a
-            href="/#contact"
+        <div className="flex items-center gap-3">
+          <Link
+            to="/contact"
             className="
-              hidden md:inline-flex items-center gap-2
-              rounded-lg bg-gradient-to-r from-amber-400 to-orange-500
-              px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em]
-              text-black shadow-md shadow-amber-500/40
-              transition-all duration-150
-              hover:shadow-amber-400/60 hover:scale-[1.03] active:scale-95
+              hidden md:inline-flex items-center gap-1.5
+              rounded-lg bg-gradient-to-r from-sky-400 via-blue-500 to-sky-600
+              px-4 py-2 text-[11px] font-bold uppercase tracking-[0.13em]
+              text-white shadow-md shadow-blue-500/40
+              transition-all duration-200
+              hover:shadow-blue-400/70 hover:scale-105 active:scale-95
             "
           >
             CONTACT
-            <ArrowRight size={14} />
-          </a>
+            <ArrowRight size={14} strokeWidth={3} />
+          </Link>
 
-          {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-amber-400/30 text-white hover:bg-white/5 transition-all duration-150"
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-400/40 text-amber-400 hover:bg:white/10 transition-all duration-200"
             aria-label="Toggle navigation"
           >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl">
-          <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-3 space-y-1 text-sm">
-            <a
-              href="/"
+        <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-300">
+          <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-4 space-y-2 text-sm">
+            <Link
+              to="/"
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               Home
-            </a>
+            </Link>
 
             {/* Mobile Services */}
-            <div className="border-b border-white/10 pb-1">
+            <div className="border-b border-white/10">
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className="w-full text-left px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg-white/5 transition-all flex items-center justify-between"
+                className="w-full text-left px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 transition-all flex items-center justify-between"
               >
                 <span>Services</span>
                 <ChevronDown
                   size={16}
-                  className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                  className={`transition-transform duration-300 ${
+                    servicesOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               {servicesOpen && (
-                <div className="ml-2 mt-1 mb-2 space-y-1 bg-white/5 rounded-lg p-2">
+                <div className="ml-2 mt-2 mb-2 space-y-1 bg-white/5 rounded-lg p-2 border border-white/10">
                   {services.map((service) => (
-                    <a
+                    <Link
                       key={service.href}
-                      href={service.href}
+                      to={service.href}
                       onClick={closeMenu}
-                      className="block px-3 py-1.5 rounded text-xs text-white/80 hover:text-amber-400 hover:bg-white/5 transition-all"
+                      className="block px-3 py-1.5 rounded text-xs text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all"
                     >
                       {service.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <a
-              href="/#about"
+            <Link
+              to="/about"
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg:white/5 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               About
-            </a>
+            </Link>
 
-            <a
-              href="/foundation"
+            <Link
+              to="/foundation"
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg:white/5 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Foundation
-            </a>
+            </Link>
 
-            <a
-              href="/leadership"
+            <Link
+              to="/leadership"
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text:white/90 hover:text-amber-400 hover:bg:white/5 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Director
-            </a>
+            </Link>
 
-            <a
-              href="/#testimonials"
+            {/* ✅ Gallery now goes to /gallery */}
+            <Link
+              to="/gallery"
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg:white/5 border-b border-white/10 transition-all"
-            >
-              Testimonials
-            </a>
-
-            <a
-              href="/#gallery"
-              onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-white/90 hover:text-amber-400 hover:bg:white/5 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Gallery
-            </a>
+            </Link>
 
-            {/* Mobile CTA */}
-            <a
-              href="/#contact"
+            <Link
+              to="/contact"
               onClick={closeMenu}
-              className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-black shadow-md shadow-amber-500/40 transition-all hover:scale-[1.03] active:scale-95"
+              className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-black shadow-lg shadow-amber-500/50 transition-all hover:scale-105 active:scale-95"
             >
               Contact Us
-              <ArrowRight size={14} />
-            </a>
+              <ArrowRight size={14} strokeWidth={3} />
+            </Link>
           </nav>
         </div>
       )}

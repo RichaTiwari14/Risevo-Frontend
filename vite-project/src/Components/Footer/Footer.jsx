@@ -4,22 +4,43 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaFacebookF,
   FaInstagram,
   FaTwitter,
+  FaYoutube,
   FaLinkedinIn,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
   const socials = [
-    { Icon: FaFacebookF, label: "Facebook", href: "#" },
-    { Icon: FaInstagram, label: "Instagram", href: "#" },
-    { Icon: FaTwitter, label: "X (Twitter)", href: "#" },
-    { Icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
+    {
+      Icon: FaInstagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/risevo_project_developers/",
+    },
+    {
+      Icon: FaYoutube,
+      label: "YouTube",
+      href: "https://www.youtube.com/channel/UCbfde5GJZczh_ddozGSMqpw",
+    },
+    {
+      Icon: FaTwitter,
+      label: "X (Twitter)",
+      href: "https://x.com/risevoproject?s=11",
+    },
+    {
+      Icon: FaLinkedinIn,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/risevo-project-developers-404a853a1/",
+    },
+    {
+      Icon: FaWhatsapp,
+      label: "WhatsApp",
+      href: "https://wa.me/919340945885",
+    },
   ];
 
   return (
-    // ⬇ yahan spacing kam kar di
     <footer className="relative bg-[#012943] text-slate-200 pt-8 pb-4 mt-8">
       {/* top gradient line */}
       <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#F5C041] via-[#5B86E5] to-[#F5C041]" />
@@ -45,6 +66,8 @@ const Footer = () => {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-slate-200 text-xs hover:text-[#F5C041] hover:border-[#F5C041] transition-colors"
                 >
                   <Icon />
@@ -125,10 +148,21 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <FaPhoneAlt className="text-[#F5C041]" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919340945885"
                   className="hover:text-[#F5C041] transition-colors"
                 >
-                  +91 98765 43210
+                  +91 93409 45885
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaWhatsapp className="text-[#25D366]" />
+                <a
+                  href="https://wa.me/919340945885"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#F5C041] transition-colors"
+                >
+                  +91 93409 45885
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -137,14 +171,12 @@ const Footer = () => {
                   href="mailto:info@risevo.com"
                   className="hover:text-[#F5C041] transition-colors break-all"
                 >
-                  info@risevo.com
+                  project@risevo.in
                 </a>
               </li>
             </ul>
 
-            <button className="mt-4 inline-flex items-center justify-center rounded-full bg-[#F5C041] px-5 py-2 text-[11px] font-semibold uppercase tracking-tight text-[#012943] shadow-md shadow-black/40 hover:bg-[#ffd56a] transition-colors">
-              Discuss Your Project
-            </button>
+          
           </div>
         </div>
 

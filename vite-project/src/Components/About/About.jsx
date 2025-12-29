@@ -1,4 +1,3 @@
-// src/Components/About/About.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
@@ -45,47 +44,75 @@ const About = () => {
             </h2>
 
             <p className="mt-4 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
-              Risevo Construction &amp; Developers is a professionally managed
+              Risevo Project &amp; Developers is a professionally managed
               civil construction company with deep expertise across{" "}
               <span className="font-semibold text-slate-900">
                 residential, commercial and infrastructure projects
               </span>
               . We deliver comprehensive, end‑to‑end construction solutions that
-              meet the highest standards.
+              adhere to the highest standards of quality and reliability.
             </p>
 
             <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
               Our reputation is built on an unwavering commitment to{" "}
               <span className="font-semibold text-[#F5C041]">
-                quality craftsmanship, rigorous safety protocols
+                superior craftsmanship, robust safety practices
               </span>{" "}
-              and on‑time project delivery. Every project we undertake reflects
-              our dedication to excellence, accountability and long‑term client
-              satisfaction.
+              and consistently on‑time project delivery. Every assignment we
+              undertake reflects our focus on excellence, accountability and
+              long‑term client satisfaction.
             </p>
-                   {/* CTA */}
-            <motion.a
-              href="/leadership"
-              whileHover={{ x: 4 }}
-              className="
-                group mt-6 inline-flex items-center gap-2
-                rounded-full bg-slate-900 px-5 py-2.5
-                text-[11px] font-semibold uppercase tracking-[0.2em]
-                text-white shadow-lg shadow-slate-500/40
-                border border-slate-800
-              "
-            >
-              <span>Meet Our Leadership</span>
-              <span
+
+            {/* CTAs */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              {/* Leadership CTA */}
+              <motion.a
+                href="/leadership"
+                whileHover={{ x: 4 }}
                 className="
-                  flex h-6 w-6 items-center justify-center
-                  rounded-full bg-white/15
-                  transition-transform duration-300 group-hover:translate-x-0.5
+                  group inline-flex items-center gap-2
+                  rounded-full bg-slate-900 px-5 py-2.5
+                  text-[11px] font-semibold uppercase tracking-[0.2em]
+                  text-white shadow-lg shadow-slate-500/40
+                  border border-slate-800
                 "
               >
-                <FiArrowRight className="h-3.5 w-3.5 text-[#F5C041]" />
-              </span>
-            </motion.a>
+                <span>Meet Our Leadership</span>
+                <span
+                  className="
+                    flex h-6 w-6 items-center justify-center
+                    rounded-full bg-white/15
+                    transition-transform duration-300 group-hover:translate-x-0.5
+                  "
+                >
+                  <FiArrowRight className="h-3.5 w-3.5 text-[#F5C041]" />
+                </span>
+              </motion.a>
+
+              {/* NEW: Foundation CTA */}
+              <motion.a
+                href="/foundation"
+                whileHover={{ x: 4 }}
+                className="
+                  group inline-flex items-center gap-2
+                  rounded-full bg-white px-5 py-2.5
+                  text-[11px] font-semibold uppercase tracking-[0.2em]
+                  text-slate-900 shadow-md shadow-slate-300/60
+                  border border-slate-300
+                "
+              >
+                <span>Learn About Our Foundation</span>
+                <span
+                  className="
+                    flex h-6 w-6 items-center justify-center
+                    rounded-full bg-slate-900/5
+                    transition-transform duration-300 group-hover:translate-x-0.5
+                  "
+                >
+                  <FiArrowRight className="h-3.5 w-3.5 text-slate-700" />
+                </span>
+              </motion.a>
+            </div>
           </motion.div>
 
           {/* Image / visual side */}
@@ -104,11 +131,11 @@ const About = () => {
                 overflow-hidden transform-gpu
               "
             >
-              {/* Glow overlays (background) */}
+              {/* Glow overlays */}
               <div className="absolute -top-10 -left-8 h-40 w-40 rounded-full bg-sky-400/40 blur-3xl" />
               <div className="absolute bottom-[-40px] right-[-30px] h-44 w-44 rounded-full bg-amber-300/40 blur-3xl" />
 
-              {/* Main image – only this visible on top */}
+              {/* Main image */}
               <img
                 src={logo}
                 alt="Risevo logo"
