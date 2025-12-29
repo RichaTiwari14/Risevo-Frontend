@@ -4,28 +4,50 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaFacebookF,
   FaInstagram,
   FaTwitter,
+  FaYoutube,
   FaLinkedinIn,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
   const socials = [
-    { Icon: FaFacebookF, label: "Facebook", href: "#" },
-    { Icon: FaInstagram, label: "Instagram", href: "#" },
-    { Icon: FaTwitter, label: "X (Twitter)", href: "#" },
-    { Icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
+    {
+      Icon: FaInstagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/risevo_project_developers/",
+    },
+    {
+      Icon: FaYoutube,
+      label: "YouTube",
+      href: "https://www.youtube.com/channel/UCbfde5GJZczh_ddozGSMqpw",
+    },
+    {
+      Icon: FaTwitter,
+      label: "X (Twitter)",
+      href: "https://x.com/risevoproject?s=11",
+    },
+    {
+      Icon: FaLinkedinIn,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/risevo-project-developers-404a853a1/",
+    },
+    {
+      Icon: FaWhatsapp,
+      label: "WhatsApp",
+      href: "https://wa.me/919340945885",
+    },
   ];
 
   return (
-    <footer className="relative bg-[#012943] text-slate-200 pt-12 pb-6 mt-16">
+    <footer className="relative bg-[#012943] text-slate-200 pt-8 pb-4 mt-8">
       {/* top gradient line */}
       <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#F5C041] via-[#5B86E5] to-[#F5C041]" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* main grid */}
-        <div className="grid gap-10 lg:gap-14 md:grid-cols-4">
+        <div className="grid gap-8 lg:gap-10 md:grid-cols-4">
           {/* Brand + text */}
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
@@ -44,6 +66,8 @@ const Footer = () => {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-slate-200 text-xs hover:text-[#F5C041] hover:border-[#F5C041] transition-colors"
                 >
                   <Icon />
@@ -124,10 +148,21 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <FaPhoneAlt className="text-[#F5C041]" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919340945885"
                   className="hover:text-[#F5C041] transition-colors"
                 >
-                  +91 98765 43210
+                  +91 93409 45885
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaWhatsapp className="text-[#25D366]" />
+                <a
+                  href="https://wa.me/919340945885"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#F5C041] transition-colors"
+                >
+                  +91 93409 45885
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -136,24 +171,22 @@ const Footer = () => {
                   href="mailto:info@risevo.com"
                   className="hover:text-[#F5C041] transition-colors break-all"
                 >
-                  info@risevo.com
+                  project@risevo.in
                 </a>
               </li>
             </ul>
 
-            <button className="mt-4 inline-flex items-center justify-center rounded-full bg-[#F5C041] px-5 py-2 text-[11px] font-semibold uppercase tracking-tight text-[#012943] shadow-md shadow-black/40 hover:bg-[#ffd56a] transition-colors">
-              Discuss Your Project
-            </button>
+          
           </div>
         </div>
 
         {/* bottom center line */}
-        <div className="mt-8 border-t border-white/10 pt-4 flex justify-center">
+        <div className="mt-6 border-t border-white/10 pt-3 flex justify-center">
           <p className="text-[11px] sm:text-xs text-slate-400 text-center">
             © {new Date().getFullYear()}{" "}
             <span className="text-slate-200">Risevo Construction</span>. All
             rights reserved. | Designed by{" "}
-            <span className="text-[#F5C041] font-semibold"> MindBridge Tech</span>
+            <span className="text-[#F5C041] font-semibold">MindBridge Tech</span>
           </p>
         </div>
       </div>

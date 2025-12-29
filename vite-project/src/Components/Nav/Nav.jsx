@@ -1,318 +1,260 @@
-// src/Components/Header/Header.jsx
 import React, { useState } from "react";
-import { FiArrowRight } from "react-icons/fi";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
+  const toggleServices = () => setServicesOpen((prev) => !prev);
+  const closeServices = () => setServicesOpen(false);
+
+  const services = [
+    { name: "All Services", href: "/#service" },
+    { name: "Residential Construction", href: "/residential" },
+    { name: "Commercial Construction", href: "/commercial" },
+    { name: "Infrastructure Development", href: "/infra" },
+    { name: "Turnkey Solutions", href: "/turnkey" },
+  ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
-      {/* Top bar */}
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-gradient-to-b from-black/95 to-black/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Left: Logo + name */}
-        <a href="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="Risevo Construction Logo"
-            className="h-10 w-10 rounded-full border border-white/25 object-cover shadow-sm shadow-black/40"
-          />
-          <div className="hidden sm:block leading-tight">
-            <p className="text-[11px] font-semibold uppercase tracking-tight text-amber-300">
-              Risevo
+        {/* Logo Section */}
+        <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300 scale-110" />
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-xl border-2 border-amber-400/60 overflow-hidden bg-gradient-to-br from-black via-slate-900 to-black shadow-lg shadow-amber-500/30 group-hover:shadow-amber-400/50 transition-all duration-300">
+              <img
+                src={logo}
+                alt="Risevo Construction Logo"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div className="hidden sm:flex flex-col leading-tight">
+            <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-amber-400 group-hover:text-amber-300 transition-colors">
+              RISEVO
             </p>
-            <p className="text-[10px] uppercase tracking-tight text-white/70">
-              Construction
+            <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-amber-300/70 group-hover:text-amber-300 transition-colors">
+              PROJECT & DEVELOPERS
             </p>
           </div>
-        </a>
+        </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm text-white/85 relative">
-          <a href="/" className="hover:text-amber-400 transition-colors">
-            Home
-          </a>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-1 text-[13px]">
+          <Link
+            to="/"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
+          >
+            HOME
+          </Link>
 
-          {/* SERVICES + DROPDOWN */}
-          <div className="relative group">
-            <a
-              href="/#service"
-              className="inline-flex items-center gap-1 hover:text-amber-400 transition-colors"
+          {/* Services Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={toggleServices}
+              className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200 flex items-center gap-2"
+              aria-haspopup="true"
+              aria-expanded={servicesOpen}
             >
-              <span>Services</span>
-              <svg
-                className="h-3.5 w-3.5 mt-[1px]"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.178l3.71-3.946a.75.75 0 111.08 1.04l-4.25 4.52a.75.75 0 01-1.08 0l-4.25-4.52a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
+              <span>SERVICES</span>
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${
+                  servicesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-            {/* Dropdown menu */}
-            <div className="absolute left-0 mt-2 hidden min-w-[220px] rounded-xl bg-black/95 border border-white/10 shadow-xl group-hover:block">
-              <a
-                href="/#service"
-                className="block px-4 py-2.5 text-xs text-white/90 hover:bg-white/10"
-              >
-                All Services
-              </a>
-              <a
-                href="/residential"
-                className="block px-4 py-2.5 text-xs text-white/90 hover:bg-white/10"
-              >
-                Residential Construction
-              </a>
-              <a
-                href="/commercial"
-                className="block px-4 py-2.5 text-xs text-white/90 hover:bg-white/10"
-              >
-                Commercial Construction
-              </a>
-              <a
-                href="/infra"
-                className="block px-4 py-2.5 text-xs text-white/90 hover:bg-white/10"
-              >
-                Infrastructure Development
-              </a>
-              <a
-                href="/turnkey"
-                className="block px-4 py-2.5 text-xs text-white/90 hover:bg-white/10"
-              >
-                Turnkey Solutions
-              </a>
+            <div
+              className={`
+                absolute left-0 mt-2 w-72 rounded-xl bg-black/95
+                border border-amber-400/40 shadow-2xl shadow-black/80
+                backdrop-blur-xl overflow-hidden
+                transition-all duration-300
+                ${
+                  servicesOpen
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-2"
+                }
+              `}
+            >
+              <div className="h-px bg-gradient-to-r from-amber-400/0 via-amber-400/60 to-amber-400/0" />
+              <div className="py-2">
+                {services.map((service, idx) => (
+                  <Link
+                    key={service.href}
+                    to={service.href}
+                    onClick={closeServices}
+                    className={`
+                      group flex items-center justify-between
+                      px-4 py-2.5 text-xs rounded-lg transition-all duration-200
+                      ${
+                        idx === 0
+                          ? "bg-gradient-to-r from-amber-400/20 to-orange-500/20 text-amber-300 font-semibold border border-amber-400/40 mx-2 my-1"
+                          : "text-white/80 hover:text-amber-400 hover:bg-white/8 mx-1"
+                      }
+                    `}
+                  >
+                    <span>{service.name}</span>
+                    <ArrowRight
+                      size={14}
+                      className="opacity-0 group-hover:opacity-100 text-amber-300 transition-opacity duration-200"
+                    />
+                  </Link>
+                ))}
+              </div>
+              <div className="h-px bg-gradient-to-r from-amber-400/0 via-amber-400/50 to-amber-400/0" />
             </div>
           </div>
 
-          {/* Direct links */}
-          <a
-            href="/#about"
-            className="hover:text-amber-400 transition-colors"
+          <Link
+            to="/about"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            About
-          </a>
+            ABOUT
+          </Link>
 
-          {/* ✅ Foundation: ab alag page /foundation */}
-          <a
-            href="/foundation"
-            className="hover:text-amber-400 transition-colors"
+          <Link
+            to="/foundation"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            Foundation
-          </a>
+            FOUNDATION
+          </Link>
 
-          {/* ✅ Director: Leadership page /leadership */}
-          <a
-            href="/leadership"
-            className="hover:text-amber-400 transition-colors"
+          <Link
+            to="/leadership"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            Director
-          </a>
+            DIRECTOR
+          </Link>
 
-          <a
-            href="/#testimonials"
-            className="hover:text-amber-400 transition-colors"
+          {/* ✅ Gallery now goes to /gallery page */}
+          <Link
+            to="/gallery"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
           >
-            Testimonials
-          </a>
-
-          {/* Gallery link */}
-          <a
-            href="/#gallery"
-            className="hover:text-amber-400 transition-colors"
-          >
-            Gallery
-          </a>
+            GALLERY
+          </Link>
         </nav>
 
-        {/* Right side: CTA + hamburger */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          {/* Desktop CTA */}
-          <a
-            href="/#contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-amber-400 px-4 lg:px-5 py-2 text-xs font-semibold uppercase tracking-tight text-black shadow-md shadow-amber-500/40 transition hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-amber-400/60"
+        {/* Right Side: CTA + Mobile Menu */}
+        <div className="flex items-center gap-3">
+          <Link
+            to="/contact"
+            className="
+              hidden md:inline-flex items-center gap-1.5
+              rounded-lg bg-gradient-to-r from-sky-400 via-blue-500 to-sky-600
+              px-4 py-2 text-[11px] font-bold uppercase tracking-[0.13em]
+              text-white shadow-md shadow-blue-500/40
+              transition-all duration-200
+              hover:shadow-blue-400/70 hover:scale-105 active:scale-95
+            "
           >
-            Contact
-            <FiArrowRight className="h-4 w-4" />
-          </a>
+            CONTACT
+            <ArrowRight size={14} strokeWidth={3} />
+          </Link>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-400/40 text-amber-400 hover:bg:white/10 transition-all duration-200"
             aria-label="Toggle navigation"
           >
-            {menuOpen ? (
-              // X icon
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              // Hamburger icon
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden w-full bg-black/95 text-white border-t border-white/10">
-          <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-3 space-y-1 text-sm">
-            <a
-              href="/"
+        <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-300">
+          <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-4 space-y-2 text-sm">
+            <Link
+              to="/"
               onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               Home
-            </a>
+            </Link>
 
-            {/* Services + sub items (mobile) */}
-            <div className="border-b border-white/10 pb-2 mb-1">
-              <a
-                href="/#service"
-                onClick={closeMenu}
-                className="block py-2 hover:text-amber-400"
+            {/* Mobile Services */}
+            <div className="border-b border-white/10">
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="w-full text-left px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 transition-all flex items-center justify-between"
               >
-                Services
-              </a>
-              <div className="ml-4 mt-1 space-y-1 text-[13px] text-white/80">
-                <a
-                  href="/residential"
-                  onClick={closeMenu}
-                  className="block py-1 hover:text-amber-400"
-                >
-                  Residential Construction
-                </a>
-                <a
-                  href="/commercial"
-                  onClick={closeMenu}
-                  className="block py-1 hover:text-amber-400"
-                >
-                  Commercial Construction
-                </a>
-                <a
-                  href="/infra"
-                  onClick={closeMenu}
-                  className="block py-1 hover:text-amber-400"
-                >
-                  Infrastructure Development
-                </a>
-                <a
-                  href="/turnkey"
-                  onClick={closeMenu}
-                  className="block py-1 hover:text-amber-400"
-                >
-                  Turnkey Solutions
-                </a>
-              </div>
+                <span>Services</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    servicesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {servicesOpen && (
+                <div className="ml-2 mt-2 mb-2 space-y-1 bg-white/5 rounded-lg p-2 border border-white/10">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      to={service.href}
+                      onClick={closeMenu}
+                      className="block px-3 py-1.5 rounded text-xs text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <a
-              href="/residential"
+            <Link
+              to="/about"
               onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
-            >
-              Residential
-            </a>
-            <a
-              href="/infra"
-              onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
-            >
-              Infrastructure
-            </a>
-            <a
-              href="/turnkey"
-              onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
-            >
-              Turnkey
-            </a>
-
-            <a
-              href="/#about"
-              onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               About
-            </a>
+            </Link>
 
-            {/* ✅ Foundation (mobile) -> /foundation */}
-            <a
-              href="/foundation"
+            <Link
+              to="/foundation"
               onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Foundation
-            </a>
+            </Link>
 
-            {/* ✅ Director (mobile) -> /leadership */}
-            <a
-              href="/leadership"
+            <Link
+              to="/leadership"
               onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
+              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Director
-            </a>
+            </Link>
 
-            <a
-              href="/#testimonials"
+            {/* ✅ Gallery now goes to /gallery */}
+            <Link
+              to="/gallery"
               onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
-            >
-              Testimonials
-            </a>
-
-            {/* Gallery link mobile */}
-            <a
-              href="/#gallery"
-              onClick={closeMenu}
-              className="block py-2 border-b border-white/10 hover:text-amber-400"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Gallery
-            </a>
+            </Link>
 
-            {/* Mobile CTA */}
-            <a
-              href="/#contact"
+            <Link
+              to="/contact"
               onClick={closeMenu}
-              className="mt-3 flex items-center justify-center gap-2 rounded-full bg-amber-400 px-4 py-2.5 text-xs font-semibold uppercase tracking-tight text-black shadow-md shadow-amber-500/40 transition hover:bg-amber-300"
+              className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-black shadow-lg shadow-amber-500/50 transition-all hover:scale-105 active:scale-95"
             >
-              Contact
-              <FiArrowRight className="h-4 w-4" />
-            </a>
+              Contact Us
+              <ArrowRight size={14} strokeWidth={3} />
+            </Link>
           </nav>
         </div>
       )}

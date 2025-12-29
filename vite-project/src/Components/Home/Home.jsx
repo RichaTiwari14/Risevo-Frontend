@@ -73,7 +73,7 @@ const SimpleConstructionHero = () => {
               WITH RISEVO
             </span>
             <span className="block text-amber-400">
-              CONSTRUCTION
+              PROJECT DEVELOPERS
             </span>
           </motion.h1>
 
