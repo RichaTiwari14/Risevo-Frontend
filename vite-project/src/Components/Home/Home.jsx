@@ -56,7 +56,7 @@ const SimpleConstructionHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            RISEVO CONSTRUCTION &amp; PROJECT DEVELOPERS
+            RISEVO PROJECT &amp; DEVELOPERS
           </motion.p>
 
           {/* Main heading – spacing fix (no big gaps between letters) */}
