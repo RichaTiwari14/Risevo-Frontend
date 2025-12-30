@@ -5,11 +5,8 @@ import logo from "../../images/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-
-  const closeMenu = () => setMenuOpen(false);
-  const toggleServices = () => setServicesOpen((prev) => !prev);
-  const closeServices = () => setServicesOpen(false);
+  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const services = [
     { name: "All Services", href: "/#service" },
@@ -18,6 +15,13 @@ const Header = () => {
     { name: "Infrastructure Development", href: "/infra" },
     { name: "Turnkey Solutions", href: "/turnkey" },
   ];
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setMobileServicesOpen(false);
+  };
+
+  const closeDesktopServices = () => setDesktopServicesOpen(false);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-gradient-to-b from-black/95 to-black/80 backdrop-blur-xl">
@@ -54,20 +58,22 @@ const Header = () => {
             HOME
           </Link>
 
-          {/* Services Dropdown */}
+          {/* Desktop Services Dropdown */}
           <div className="relative">
             <button
               type="button"
-              onClick={toggleServices}
+              onClick={() =>
+                setDesktopServicesOpen((prev) => !prev)
+              }
               className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200 flex items-center gap-2"
               aria-haspopup="true"
-              aria-expanded={servicesOpen}
+              aria-expanded={desktopServicesOpen}
             >
               <span>SERVICES</span>
               <ChevronDown
                 size={16}
                 className={`transition-transform duration-300 ${
-                  servicesOpen ? "rotate-180" : ""
+                  desktopServicesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
@@ -79,7 +85,7 @@ const Header = () => {
                 backdrop-blur-xl overflow-hidden
                 transition-all duration-300
                 ${
-                  servicesOpen
+                  desktopServicesOpen
                     ? "opacity-100 visible translate-y-0"
                     : "opacity-0 invisible -translate-y-2"
                 }
@@ -91,7 +97,7 @@ const Header = () => {
                   <Link
                     key={service.href}
                     to={service.href}
-                    onClick={closeServices}
+                    onClick={closeDesktopServices}
                     className={`
                       group flex items-center justify-between
                       px-4 py-2.5 text-xs rounded-lg transition-all duration-200
@@ -135,7 +141,6 @@ const Header = () => {
             DIRECTOR
           </Link>
 
-          {/* ✅ Gallery now goes to /gallery page */}
           <Link
             to="/gallery"
             className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
@@ -163,8 +168,8 @@ const Header = () => {
 
           <button
             type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-400/40 text-amber-400 hover:bg:white/10 transition-all duration-200"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-400/40 text-amber-400 hover:bg-white/10 transition-all duration-200"
             aria-label="Toggle navigation"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -174,7 +179,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl max-h-[calc(100vh-4rem)] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-300">
           <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-4 space-y-2 text-sm">
             <Link
               to="/"
@@ -187,18 +192,20 @@ const Header = () => {
             {/* Mobile Services */}
             <div className="border-b border-white/10">
               <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="w-full text-left px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 transition-all flex items-center justify-between"
+                onClick={() =>
+                  setMobileServicesOpen((prev) => !prev)
+                }
+                className="w-full text-left px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all flex items-center justify-between"
               >
                 <span>Services</span>
                 <ChevronDown
                   size={16}
                   className={`transition-transform duration-300 ${
-                    servicesOpen ? "rotate-180" : ""
+                    mobileServicesOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
-              {servicesOpen && (
+              {mobileServicesOpen && (
                 <div className="ml-2 mt-2 mb-2 space-y-1 bg-white/5 rounded-lg p-2 border border-white/10">
                   {services.map((service) => (
                     <Link
@@ -217,7 +224,7 @@ const Header = () => {
             <Link
               to="/about"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               About
             </Link>
@@ -225,7 +232,7 @@ const Header = () => {
             <Link
               to="/foundation"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               Foundation
             </Link>
@@ -233,16 +240,15 @@ const Header = () => {
             <Link
               to="/leadership"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               Director
             </Link>
 
-            {/* ✅ Gallery now goes to /gallery */}
             <Link
               to="/gallery"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               Gallery
             </Link>

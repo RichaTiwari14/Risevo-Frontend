@@ -1,5 +1,6 @@
 // Footer.jsx
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -10,6 +11,32 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
+
+/* ===== Scroll only for HOME sections (Services etc.) ===== */
+const ScrollLink = ({ to, children }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.querySelector(to)?.scrollIntoView({ behavior: "smooth" });
+      }, 120);
+    } else {
+      document.querySelector(to)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className="text-left hover:text-[#F5C041] transition-colors"
+    >
+      {children}
+    </button>
+  );
+};
 
 const Footer = () => {
   const socials = [
@@ -42,32 +69,31 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#012943] text-slate-200 pt-8 pb-4 mt-8">
-      {/* top gradient line */}
+      {/* Top gradient line */}
       <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#F5C041] via-[#5B86E5] to-[#F5C041]" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* main grid */}
+        {/* Main grid */}
         <div className="grid gap-8 lg:gap-10 md:grid-cols-4">
-          {/* Brand + text */}
+          {/* Brand */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+            <h3 className="text-lg sm:text-xl font-extrabold text-white">
               Risevo Construction
             </h3>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
               From residential homes to large infrastructure, Risevo delivers
-              reliable, quality‑driven construction with transparent execution
-              and on‑time delivery.
+              reliable, quality-driven construction with transparent execution
+              and on-time delivery.
             </p>
 
-            {/* Social icons */}
             <div className="mt-4 flex flex-wrap gap-3">
               {socials.map(({ Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
-                  aria-label={label}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={label}
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-slate-200 text-xs hover:text-[#F5C041] hover:border-[#F5C041] transition-colors"
                 >
                   <Icon />
@@ -76,55 +102,45 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick links */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-3 tracking-tight">
+            <h4 className="text-sm font-semibold text-white mb-3">
               Quick Links
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <a href="#home" className="hover:text-[#F5C041] transition-colors">
+                <Link to="/" className="hover:text-[#F5C041]">
                   Home
-                </a>
+                </Link>
               </li>
+
               <li>
-                <a
-                  href="#service"
-                  className="hover:text-[#F5C041] transition-colors"
-                >
-                  Services
-                </a>
+                <ScrollLink to="#service">Services</ScrollLink>
               </li>
+
               <li>
-                <a
-                  href="#projects"
-                  className="hover:text-[#F5C041] transition-colors"
-                >
-                  Projects
-                </a>
+                <Link to="/leadership" className="hover:text-[#F5C041]">
+                  Director
+                </Link>
               </li>
+
               <li>
-                <a
-                  href="#about"
-                  className="hover:text-[#F5C041] transition-colors"
-                >
+                <Link to="/about" className="hover:text-[#F5C041]">
                   About
-                </a>
+                </Link>
               </li>
+
               <li>
-                <a
-                  href="#contact"
-                  className="hover:text-[#F5C041] transition-colors"
-                >
+                <Link to="/contact" className="hover:text-[#F5C041]">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-3 tracking-tight">
+            <h4 className="text-sm font-semibold text-white mb-3">
               Core Services
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
@@ -135,9 +151,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact / CTA */}
+          {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-3 tracking-tight">
+            <h4 className="text-sm font-semibold text-white mb-3">
               Contact Us
             </h4>
             <ul className="space-y-3 text-sm text-slate-300">
@@ -145,48 +161,51 @@ const Footer = () => {
                 <FaMapMarkerAlt className="mt-0.5 text-[#F5C041]" />
                 <span>Raipur, Chhattisgarh, India</span>
               </li>
+
               <li className="flex items-center gap-2">
                 <FaPhoneAlt className="text-[#F5C041]" />
                 <a
                   href="tel:+919340945885"
-                  className="hover:text-[#F5C041] transition-colors"
+                  className="hover:text-[#F5C041]"
                 >
                   +91 93409 45885
                 </a>
               </li>
+
               <li className="flex items-center gap-2">
                 <FaWhatsapp className="text-[#25D366]" />
                 <a
                   href="https://wa.me/919340945885"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[#F5C041] transition-colors"
+                  className="hover:text-[#F5C041]"
                 >
                   +91 93409 45885
                 </a>
               </li>
+
               <li className="flex items-center gap-2">
                 <FaEnvelope className="text-[#F5C041]" />
                 <a
-                  href="mailto:info@risevo.com"
-                  className="hover:text-[#F5C041] transition-colors break-all"
+                  href="mailto:project@risevo.in"
+                  className="hover:text-[#F5C041] break-all"
                 >
                   project@risevo.in
                 </a>
               </li>
             </ul>
-
-          
           </div>
         </div>
 
-        {/* bottom center line */}
+        {/* Bottom */}
         <div className="mt-6 border-t border-white/10 pt-3 flex justify-center">
           <p className="text-[11px] sm:text-xs text-slate-400 text-center">
             © {new Date().getFullYear()}{" "}
             <span className="text-slate-200">Risevo Construction</span>. All
-            rights reserved. | Designed by{" "}
-            <span className="text-[#F5C041] font-semibold">MindBridge Tech</span>
+            rights reserved | Designed by{" "}
+            <span className="text-[#F5C041] font-semibold">
+              MindBridge Tech
+            </span>
           </p>
         </div>
       </div>
