@@ -49,47 +49,58 @@ const directors = [
 
 const LeadershipPage = () => {
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 pt-24 pb-16 overflow-hidden">
-      {/* Subtle background effects */}
+    <main className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-24 pb-16 overflow-hidden">
+      {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl opacity-60" />
-        <div className="absolute bottom-[-100px] right-[-80px] h-72 w-72 rounded-full bg-amber-100/30 blur-3xl opacity-60" />
+        <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl opacity-70" />
+        <div className="absolute bottom-[-120px] right-[-100px] h-80 w-80 rounded-full bg-amber-400/20 blur-3xl opacity-70" />
+        <div className="absolute inset-x-0 top-40 h-64 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back button */}
+        {/* Top Bar: Back (left) + Login (right) */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-10"
+          className="mb-10 flex items-center justify-between gap-4"
         >
+          {/* Back button - Left */}
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700/60 bg-slate-900/70 text-slate-100 text-sm font-medium shadow-sm hover:bg-slate-800 hover:border-slate-500 transition-colors"
           >
             <FiArrowLeft className="w-4 h-4" />
             Back
           </a>
+
+          {/* Login button - Right (dark blue, premium) */}
+          <a
+            href="/login"
+            className="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white text-sm font-semibold shadow-lg shadow-blue-900/40 hover:from-blue-800 hover:via-blue-700 hover:to-blue-500 transition-colors border border-blue-400/40"
+          >
+            Login
+          </a>
         </motion.div>
 
         {/* Philosophy Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              WE ARE NOT IN THE BUSINESS OF CONSTRUCTION.
+        <section className="mt-10">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-1 rounded-full bg-slate-900/70 border border-slate-700 text-xs font-medium uppercase tracking-[0.2em] text-slate-300 mb-5">
+              Our Philosophy
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-50 mb-5">
+              WE ARE NOT IN THE BUSINESS OF{" "}
+              <span className="text-slate-300">CONSTRUCTION.</span>
               <br />
-              <span className="text-blue-600">
-            WE ARE IN THE BUSINESS OF LEGACY.
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+                WE ARE IN THE BUSINESS OF LEGACY.
               </span>
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              At RISEVO Project & Developers, construction is measured by trust preserved and standards set for the future.
+            <p className="text-base md:text-lg text-slate-300/90 max-w-2xl mx-auto">
+              At RISEVO Project &amp; Developers, construction is measured by
+              trust preserved and standards set for the future.
             </p>
           </div>
 
@@ -98,21 +109,25 @@ const LeadershipPage = () => {
             {/* Left Column */}
             <div className="space-y-6">
               {/* Card 1 */}
-              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/70 to-transparent" />
+                <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Core Philosophy
                 </h3>
-                <p className="text-slate-700 leading-relaxed">
-                  True construction is measured by how responsibly we build, how deeply people trust us, and how long our work stands as a symbol of integrity.
+                <p className="text-slate-100/90 leading-relaxed text-sm md:text-base">
+                  True construction is measured by how responsibly we build, how
+                  deeply people trust us, and how long our work stands as a
+                  symbol of integrity.
                 </p>
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent" />
+                <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Three Key Questions
                 </h3>
-                <ul className="space-y-2 text-slate-700 text-sm">
+                <ul className="space-y-2 text-slate-100/90 text-sm md:text-base">
                   <li>✓ Does it serve people with dignity?</li>
                   <li>✓ Does it respect nature and resources?</li>
                   <li>✓ Will it stand as a symbol of integrity?</li>
@@ -120,12 +135,14 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
+                <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Our Respect
                 </h3>
-                <p className="text-slate-700 leading-relaxed text-sm">
-                  We treat time as a commitment, resources as borrowed from the future, and nature as a partner — not a commodity.
+                <p className="text-slate-100/90 leading-relaxed text-sm md:text-base">
+                  We treat time as a commitment, resources as borrowed from the
+                  future, and nature as a partner — not a commodity.
                 </p>
               </div>
             </div>
@@ -133,11 +150,12 @@ const LeadershipPage = () => {
             {/* Right Column */}
             <div className="space-y-6">
               {/* Card 4 */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border border-blue-200 shadow-sm">
-                <h3 className="text-blue-700 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-gradient-to-br from-blue-950/70 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 border border-blue-600/60 shadow-xl shadow-blue-900/40 backdrop-blur">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15),_transparent_60%)] pointer-events-none" />
+                <h3 className="relative text-blue-200 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Legendary Thinking
                 </h3>
-                <ul className="space-y-2 text-slate-700 text-sm">
+                <ul className="relative space-y-2 text-slate-100/90 text-sm md:text-base">
                   <li>• Quality is our signature</li>
                   <li>• Trust is our real asset</li>
                   <li>• Discipline defines our process</li>
@@ -146,27 +164,28 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 5 */}
-              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+                <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   The RISEVO Standard
                 </h3>
-                <p className="text-slate-700 text-sm italic leading-relaxed">
-                  "If it cannot last, we do not build it. If it compromises values, we do not accept it."
+                <p className="text-slate-100/90 text-sm md:text-base italic leading-relaxed">
+                  "If it cannot last, we do not build it. If it compromises
+                  values, we do not accept it."
                 </p>
               </div>
 
               {/* Card 6 */}
-              <div className="bg-amber-50 rounded-xl p-6 border border-amber-200 shadow-sm">
-                <h3 className="text-amber-800 font-semibold text-sm uppercase tracking-wide mb-3">
+              <div className="relative bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 border border-amber-400/70 shadow-xl shadow-amber-900/30 backdrop-blur">
+                <h3 className="text-amber-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Founder's Statement
                 </h3>
-                <p className="text-amber-900 font-semibold text-sm">
+                <p className="text-amber-100 font-semibold text-sm md:text-base">
                   "Structures may age. Standards must not."
                 </p>
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Leadership Team Section */}
         <motion.section
@@ -174,69 +193,93 @@ const LeadershipPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
+          className="mt-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-500/10 border border-blue-400/40 text-xs font-medium uppercase tracking-[0.25em] text-blue-200 mb-4">
+              Leadership
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-50 mb-4">
               OUR LEADERSHIP TEAM
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Each director combines deep experience with our founder's philosophy of legacy, integrity, and long-term thinking.
+            <p className="text-base md:text-lg text-slate-300/90 max-w-2xl mx-auto">
+              Each director combines deep experience with our founder&apos;s
+              philosophy of legacy, integrity, and long-term thinking.
             </p>
           </div>
 
           {/* Directors Grid */}
-          <div className="space-y-12">
+          <div className="space-y-10 md:space-y-12">
             {directors.map((director, index) => {
               const isEven = index % 2 === 0;
 
               return (
-                <div
+                <motion.div
                   key={director.name}
-                  className="grid md:grid-cols-2 gap-8 items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="relative rounded-3xl bg-slate-950/70 border border-slate-800/80 shadow-2xl shadow-black/40 overflow-hidden backdrop-blur-lg hover:border-slate-500/80 hover:-translate-y-1.5 transition-transform duration-300"
                 >
-                  {/* Image */}
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5 }}
-                    className={isEven ? "md:order-1" : "md:order-2"}
-                  >
-                    <div className="relative w-full max-w-sm mx-auto aspect-[3/4] rounded-2xl overflow-hidden bg-slate-200 shadow-lg">
-                      <img
-                        src={director.image}
-                        alt={director.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                        <p className="text-xs font-semibold text-blue-200 uppercase tracking-wide">
-                          {director.role}
-                        </p>
-                        <p className="text-lg font-bold mt-1">{director.name}</p>
+                  {/* Accent gradient line */}
+                  <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400" />
+
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center px-6 py-7 md:px-8 md:py-8">
+                    {/* Image + Name/Role panel */}
+                    <div
+                      className={
+                        isEven
+                          ? "order-1 md:order-1 flex justify-center"
+                          : "order-1 md:order-2 flex justify-center"
+                      }
+                    >
+                      <div className="relative w-full max-w-xs lg:max-w-sm rounded-2xl overflow-hidden bg-slate-900/80 border border-slate-700/80 shadow-xl shadow-black/40">
+                        {/* Image area with fixed aspect ratio */}
+                        <div className="relative aspect-[3/4] w-full">
+                          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-900/60" />
+                          <img
+                            src={director.image}
+                            alt={director.name}
+                            className="relative w-full h-full object-contain"
+                          />
+                        </div>
+
+                        {/* Footer panel with name and role (not over image) */}
+                        <div className="border-t border-slate-700/80 bg-black/80 px-4 py-3">
+                          <p className="text-[0.65rem] font-semibold text-blue-200/80 uppercase tracking-[0.25em]">
+                            {director.role}
+                          </p>
+                          <p className="text-sm md:text-base font-semibold text-slate-50 mt-1">
+                            {director.name}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </motion.div>
 
-                  {/* Content */}
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5 }}
-                    className={isEven ? "md:order-2" : "md:order-1"}
-                  >
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                      {director.name}
-                    </h3>
-                    <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">
-                      {director.role}
-                    </p>
-                    <p className="text-slate-700 leading-relaxed">
-                      {director.focus}
-                    </p>
-                  </motion.div>
-                </div>
+                    {/* Content */}
+                    <div
+                      className={
+                        isEven
+                          ? "order-2 md:order-2 text-left"
+                          : "order-2 md:order-1 text-left"
+                      }
+                    >
+                      <p className="text-[0.7rem] font-semibold text-blue-300/80 uppercase tracking-[0.3em] mb-2">
+                        Leadership Profile
+                      </p>
+                      <h3 className="text-2xl md:text-3xl font-semibold text-slate-50 mb-2">
+                        {director.name}
+                      </h3>
+                      <p className="text-sm font-semibold text-blue-300 uppercase tracking-[0.25em] mb-4">
+                        {director.role}
+                      </p>
+                      <p className="text-sm md:text-base text-slate-200/90 leading-relaxed">
+                        {director.focus}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               );
             })}
           </div>

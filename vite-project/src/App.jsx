@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
@@ -37,11 +37,20 @@ import Land from "./Components/Cards/Land.jsx";
 import Foundation from "./Components/About/Foundation.jsx";
 import WhatsAppIcon from "./Components/Whatsapp/Whatsapp.jsx";
 import FloatingSocials from "./Components/Whatsapp/Floating.jsx";
+import FloatingLogo from "./Components/Whatsapp/Logo.jsx";
 
 function App() {
   const location = useLocation();
+
   const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
   const shouldShowNav = !hideNavRoutes.includes(location.pathname);
+
+  // ✅ Har route change par page ko bilkul top pe le aao
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   return (
     <AuthProvider>
@@ -78,16 +87,13 @@ function App() {
           element={
             <>
               <Home />
+              <FloatingLogo />
               <Services />
               <VisionMission />
               <Cards />
-              {/* About / Contact / Gallery sections removed from Home */}
-              {/* <About /> */}
               <Testimonials />
-              {/* <Gallery /> */}
               <WhatsAppIcon />
               <FloatingSocials />
-              {/* <Contact /> */}
               <Faq />
               <Footer />
             </>
@@ -116,7 +122,7 @@ function App() {
           }
         />
 
-        {/* ✅ New Gallery page */}
+        {/* Gallery page */}
         <Route
           path="/gallery"
           element={
