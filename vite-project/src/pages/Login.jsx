@@ -157,6 +157,29 @@ const Login = () => {
         <div className="absolute -bottom-44 -left-32 w-96 h-96 bg-indigo-500/30 rounded-full blur-[110px]" />
       </div>
 
+      {/* 🔙 Premium Back to Home – top left */}
+      <a
+        href="/"
+        className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/30
+                   bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-indigo-900/60
+                   text-[13px] font-medium text-slate-50
+                   shadow-[0_18px_45px_rgba(15,23,42,0.8)]
+                   hover:shadow-[0_22px_55px_rgba(79,70,229,0.9)]
+                   hover:border-indigo-300/80
+                   hover:from-indigo-600/80 hover:via-purple-600/70 hover:to-sky-500/70
+                   backdrop-blur-2xl transition-all duration-300
+                   transform hover:-translate-y-[1px] hover:scale-[1.01]"
+      >
+        <span className="flex h-6 w-6 items-center justify-center rounded-full
+                         bg-gradient-to-br from-indigo-400 to-fuchsia-400
+                         text-[15px] shadow-[0_0_15px_rgba(129,140,248,0.9)]">
+          ←
+        </span>
+        <span className="tracking-[0.18em] uppercase text-[11px] text-slate-100/90">
+          Back to Home
+        </span>
+      </a>
+
       {/* Glass Card */}
       <div className="w-full max-w-md relative z-10 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 p-8">
         {/* 
@@ -274,12 +297,12 @@ const Login = () => {
           </button>
         </form>
 
-       <p className="mt-6 text-center text-[11px] sm:text-xs">
-  <span className="text-slate-400/80">© Powered By </span>
-  <span className="font-semibold bg-gradient-to-r from-indigo-300 via-sky-300 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(129,140,248,0.7)]">
-    MINDBRIDGE TECH
-  </span>
-</p>
+        <p className="mt-6 text-center text-[11px] sm:text-xs">
+          <span className="text-slate-400/80">© Powered By </span>
+          <span className="font-semibold bg-gradient-to-r from-indigo-300 via-sky-300 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(129,140,248,0.7)]">
+            MINDBRIDGE TECH
+          </span>
+        </p>
       </div>
     </div>
   );
