@@ -197,17 +197,31 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-6 border-t border-white/10 pt-3 flex justify-center">
-          <p className="text-[11px] sm:text-xs text-slate-400 text-center">
-            © {new Date().getFullYear()}{" "}
-            <span className="text-slate-200">Risevo Construction</span>. All
-            rights reserved | Designed by{" "}
-            <span className="text-[#F5C041] font-semibold">
-              MindBridge Tech
-            </span>
-          </p>
-        </div>
+       {/* Bottom */}
+<div className="mt-6 border-t border-white/10 pt-3 flex justify-center">
+  <p className="text-[11px] sm:text-xs text-slate-300 text-center">
+    Powered By {"   "}
+    <a
+      href="https://wa.me/917470958844"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        inline-flex items-center gap-1.5
+        rounded-full px-3 py-0.5
+        bg-yellow-500/10
+        border border-yellow-400/70
+        text-yellow-300 font-semibold
+        shadow-[0_0_8px_rgba(250,204,21,0.45)]
+        hover:bg-yellow-500/15 hover:text-yellow-200 hover:border-yellow-300
+        transition-colors
+      "
+    >
+      {/* chhota glow dot icon (solid yellow) */}
+      <span className="inline-block h-2 w-2 rounded-full bg-yellow-300 shadow-[0_0_6px_rgba(250,204,21,0.8)]" />
+      <span>MIND BRIDGE TECH</span>
+    </a>
+  </p>
+</div>
       </div>
     </footer>
   );

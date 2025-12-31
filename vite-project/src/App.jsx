@@ -45,6 +45,10 @@ function App() {
   const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
   const shouldShowNav = !hideNavRoutes.includes(location.pathname);
 
+  // Floating logo ko bhi admin / login pages pe hide karna ho to:
+  const hideFloatingLogoRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
+  const shouldShowFloatingLogo = !hideFloatingLogoRoutes.includes(location.pathname);
+
   // ✅ Har route change par page ko bilkul top pe le aao
   useLayoutEffect(() => {
     if (typeof window !== "undefined") {
@@ -80,6 +84,9 @@ function App() {
 
       {shouldShowNav && <Header />}
 
+      {/* ✅ Floating logo yaha rakha – ab har page pe (client side) dikhenga */}
+      {shouldShowFloatingLogo && <FloatingLogo />}
+
       <Routes>
         {/* Home page */}
         <Route
@@ -87,7 +94,7 @@ function App() {
           element={
             <>
               <Home />
-              <FloatingLogo />
+              {/* ⛔ yaha se FloatingLogo hata diya, kyunki ab upar global hai */}
               <Services />
               <VisionMission />
               <Cards />

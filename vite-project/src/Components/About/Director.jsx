@@ -1,6 +1,5 @@
 // src/pages/LeadershipPage.jsx
 import React from "react";
-import { motion } from "framer-motion";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Sagar from "../../images/sagar.jpeg";
@@ -59,12 +58,7 @@ const LeadershipPage = () => {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Bar: Back (left) + Login (right) */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 flex items-center justify-between gap-4"
-        >
+        <div className="mb-10 flex items-center justify-between gap-4">
           {/* Back button - Left */}
           <a
             href="/"
@@ -81,7 +75,7 @@ const LeadershipPage = () => {
           >
             Login
           </a>
-        </motion.div>
+        </div>
 
         {/* Philosophy Section */}
         <section className="mt-10">
@@ -188,13 +182,7 @@ const LeadershipPage = () => {
         </section>
 
         {/* Leadership Team Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="mt-20"
-        >
+        <section className="mt-20">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-500/10 border border-blue-400/40 text-xs font-medium uppercase tracking-[0.25em] text-blue-200 mb-4">
               Leadership
@@ -214,13 +202,9 @@ const LeadershipPage = () => {
               const isEven = index % 2 === 0;
 
               return (
-                <motion.div
+                <div
                   key={director.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="relative rounded-3xl bg-slate-950/70 border border-slate-800/80 shadow-2xl shadow-black/40 overflow-hidden backdrop-blur-lg hover:border-slate-500/80 hover:-translate-y-1.5 transition-transform duration-300"
+                  className="relative rounded-3xl bg-slate-950/70 border border-slate-800/80 shadow-2xl shadow-black/40 overflow-hidden backdrop-blur-lg"
                 >
                   {/* Accent gradient line */}
                   <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400" />
@@ -245,7 +229,7 @@ const LeadershipPage = () => {
                           />
                         </div>
 
-                        {/* Footer panel with name and role (not over image) */}
+                        {/* Footer panel with name and role */}
                         <div className="border-t border-slate-700/80 bg-black/80 px-4 py-3">
                           <p className="text-[0.65rem] font-semibold text-blue-200/80 uppercase tracking-[0.25em]">
                             {director.role}
@@ -279,11 +263,11 @@ const LeadershipPage = () => {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.section>
+        </section>
       </div>
     </main>
   );
