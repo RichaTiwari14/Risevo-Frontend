@@ -9,13 +9,11 @@ import {
   FaHardHat,
   FaProjectDiagram,
 } from "react-icons/fa";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 
-// Two high-quality commercial images (front & back for flip)
-const HERO_FRONT =
-  "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600";
-const HERO_BACK =
-  "https://images.pexels.com/photos/443383/pexels-photo-443383.jpeg?auto=compress&cs=tinysrgb&w=1600";
+// 👇 Local images
+import underConstructionImg from "../../images/a.jpeg"; // header ke paas wali image
+import completedImg from "../../images/b.jpeg";         // footer ke paas wali image
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -36,9 +34,8 @@ const Commercial = () => {
         py-20 sm:py-24 lg:py-28
       "
     >
-      {/* Textured + animated background */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* animated glows */}
         <motion.div
           className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl"
           animate={{ x: [0, 26, 0], y: [0, -12, 0] }}
@@ -49,8 +46,6 @@ const Commercial = () => {
           animate={{ x: [0, -26, 0], y: [0, 14, 0] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         />
-
-        {/* dot grid */}
         <div
           className="
             absolute inset-0
@@ -59,7 +54,6 @@ const Commercial = () => {
             opacity-50 mix-blend-multiply
           "
         />
-        {/* diagonal lines */}
         <div
           className="
             absolute inset-0
@@ -71,7 +65,7 @@ const Commercial = () => {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Back to Home button */}
+        {/* Back to Home */}
         <div className="mb-6 flex items-center justify-between">
           <motion.a
             href="/"
@@ -101,15 +95,19 @@ const Commercial = () => {
           </motion.a>
         </div>
 
-        {/* HERO: text + image flip snapshot */}
+        {/* HERO: text + top image (a.jpeg) */}
         <motion.div
           variants={fadeUp(0)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
-          className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)] items-center"
+          className="
+            grid gap-10
+            lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)]
+            items-start
+          "
         >
-          {/* Text side */}
+          {/* Text */}
           <div className="space-y-5">
             <p className="inline-flex items-center justify-center rounded-full border border-sky-300/70 bg-white/90 px-4 py-1 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-sky-900 shadow-sm">
               COMMERCIAL CONSTRUCTION
@@ -133,66 +131,31 @@ const Commercial = () => {
             </ul>
           </div>
 
-          {/* Flipping image snapshot (images only, no text inside) */}
+          {/* Top image: Under Construction (a.jpeg) */}
           <motion.div
             variants={fadeUp(0.1)}
-            className="relative [perspective:1200px]"
+            className="space-y-4"
           >
-            <motion.div
+            <div
               className="
-                group relative h-56 sm:h-64 md:h-72 w-full
                 rounded-3xl overflow-hidden
-                shadow-[0_26px_90px_rgba(15,23,42,0.3)]
-                bg-slate-900
-                transform-gpu
+                bg-slate-900/5
+                shadow-[0_18px_50px_rgba(15,23,42,0.25)]
               "
-              whileHover={{ rotateY: 180 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
-              style={{ transformStyle: "preserve-3d" }}
             >
-              {/* FRONT FACE */}
-              <div
-                className="absolute inset-0"
-                style={{ backfaceVisibility: "hidden" }}
-              >
-                <motion.img
-                  src={HERO_FRONT}
-                  alt="Modern commercial glass tower"
-                  className="h-full w-full object-cover"
-                  initial={{ scale: 1.03 }}
-                  animate={{ scale: [1.03, 1.0, 1.03] }}
-                  transition={{
-                    duration: 12,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+              <img
+                src={underConstructionImg}
+                alt="Under construction commercial building"
+                className="w-full h-56 sm:h-64 md:h-72 object-cover"
+                loading="lazy"
+              />
+              <div className="px-4 py-3 bg-white/95 border-t border-slate-200 text-xs sm:text-sm text-slate-700">
+                <span className="font-semibold text-amber-600 mr-1">
+                  Under Construction:
+                </span>
+                Structural frames, cores and main services are being executed on site.
               </div>
-
-              {/* BACK FACE */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  transform: "rotateY(180deg)",
-                  backfaceVisibility: "hidden",
-                }}
-              >
-                <motion.img
-                  src={HERO_BACK}
-                  alt="Retail and commercial plaza"
-                  className="h-full w-full object-cover"
-                  initial={{ scale: 1.03 }}
-                  animate={{ scale: [1.03, 1.0, 1.03] }}
-                  transition={{
-                    duration: 14,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
-              </div>
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -204,11 +167,6 @@ const Commercial = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            whileHover={{
-              y: -10,
-              scale: 1.01,
-              boxShadow: "0 26px 90px rgba(15,23,42,0.22)",
-            }}
             className="
               relative rounded-3xl bg-white
               border border-sky-200
@@ -223,12 +181,9 @@ const Commercial = () => {
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-              <motion.div
-                whileHover={{ rotate: 4 }}
-                className="rounded-2xl bg-sky-50 p-3 border border-sky-200 text-sky-700 shrink-0 sm:mt-1"
-              >
+              <div className="rounded-2xl bg-sky-50 p-3 border border-sky-200 text-sky-700 shrink-0 sm:mt-1">
                 <FaBuilding className="h-6 w-6" />
-              </motion.div>
+              </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-sky-800">
                   OFFICE BUILDINGS &amp; CORPORATE SPACES
@@ -257,11 +212,6 @@ const Commercial = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            whileHover={{
-              y: -10,
-              scale: 1.01,
-              boxShadow: "0 26px 90px rgba(15,23,42,0.22)",
-            }}
             className="
               relative rounded-3xl bg-white
               border border-amber-200
@@ -276,12 +226,9 @@ const Commercial = () => {
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-              <motion.div
-                whileHover={{ rotate: -4 }}
-                className="rounded-2xl bg-amber-50 p-3 border border-amber-200 text-amber-700 shrink-0 sm:mt-1"
-              >
+              <div className="rounded-2xl bg-amber-50 p-3 border border-amber-200 text-amber-700 shrink-0 sm:mt-1">
                 <FaStore className="h-6 w-6" />
-              </motion.div>
+              </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-amber-800">
                   RETAIL &amp; HIGH‑STREET SHOWROOMS
@@ -309,11 +256,6 @@ const Commercial = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            whileHover={{
-              y: -10,
-              scale: 1.01,
-              boxShadow: "0 26px 90px rgba(15,23,42,0.22)",
-            }}
             className="
               relative rounded-3xl bg-white
               border border-slate-200
@@ -328,12 +270,9 @@ const Commercial = () => {
               transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-              <motion.div
-                whileHover={{ rotate: 3 }}
-                className="rounded-2xl bg-slate-50 p-3 border border-slate-200 text-slate-700 shrink-0 sm:mt-1"
-              >
+              <div className="rounded-2xl bg-slate-50 p-3 border border-slate-200 text-slate-700 shrink-0 sm:mt-1">
                 <FaCity className="h-6 w-6" />
-              </motion.div>
+              </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-slate-800">
                   COMMERCIAL COMPLEXES &amp; BUSINESS PARKS
@@ -356,7 +295,7 @@ const Commercial = () => {
           </motion.article>
         </div>
 
-        {/* PROCESS SECTION – centered heading */}
+        {/* PROCESS SECTION */}
         <motion.div
           variants={fadeUp(0.5)}
           initial="hidden"
@@ -399,7 +338,7 @@ const Commercial = () => {
             {/* Step 2 */}
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 18px 45px rgba(15,23,42,0.25)" }}
-              className="relative rounded-2xl border border-indigo-200 bg:white/95 p-4 sm:p-5"
+              className="relative rounded-2xl border border-indigo-200 bg-white/95 p-4 sm:p-5"
             >
               <div className="flex items-center gap-2 text-indigo-700">
                 <FaBuilding className="h-4 w-4" />
@@ -458,6 +397,33 @@ const Commercial = () => {
                 with confidence.
               </p>
             </motion.div>
+          </div>
+        </motion.div>
+
+        {/* BOTTOM IMAGE – footer ke paas (b.jpeg) */}
+        <motion.div
+          variants={fadeUp(0.7)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-16 sm:mt-20 max-w-5xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_20px_70px_rgba(15,23,42,0.3)]
+            "
+          >
+            <img
+              src={completedImg}
+              alt="Completed commercial project with retail and offices"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              loading="lazy"
+            />
+            {/* subtle gradient overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/25 to-transparent" />
+           
           </div>
         </motion.div>
       </div>
