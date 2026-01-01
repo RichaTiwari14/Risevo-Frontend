@@ -3,6 +3,10 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FiHome, FiGrid, FiLayers, FiArrowLeft } from "react-icons/fi";
 
+// Yahan apne actual image path lagao
+import residence1 from "../../images/residence1.jpg";
+import residence2 from "../../images/residence2.jpg";
+
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -246,6 +250,32 @@ const Residential = () => {
           </p>
         </motion.div>
 
+        {/* TOP IMAGE - CARDS KE UPAR */}
+        <motion.div
+          variants={fadeUp(0.15)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 max-w-4xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={residence1}
+              alt="Residential project exterior"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+          
+          </div>
+        </motion.div>
+
         {/* MAIN 3D CARDS (stacked) */}
         <div className="mt-12 space-y-7 sm:space-y-8">
           <Card3D
@@ -297,6 +327,32 @@ const Residential = () => {
           />
         </div>
 
+        {/* BOTTOM IMAGE - CARDS KE NICHE */}
+        <motion.div
+          variants={fadeUp(0.25)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 sm:mt-14 max-w-4xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={residence2}
+              alt="Residential project second view"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+           
+          </div>
+        </motion.div>
+
         {/* PROCESS – animated, more solid */}
         <motion.div
           variants={fadeUp(0.4)}
@@ -326,7 +382,11 @@ const Residential = () => {
                     bg-gradient-to-r ${item.accent}
                   `}
                   animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
                 <p className="text-[11px] font-semibold tracking-[0.2em] text-slate-400 uppercase">
                   STEP {item.step}

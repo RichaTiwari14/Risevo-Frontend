@@ -3,6 +3,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiMap, FiDroplet, FiZap, FiCheckCircle, FiArrowLeft } from "react-icons/fi";
 
+// Local images (2 images)
+import infra1 from "../../images/infra1.jpg";
+import infra2 from "../../images/infra2.jpg";
+
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -147,6 +151,32 @@ const Infra = () => {
           </div>
         </motion.div>
 
+        {/* TOP IMAGE – CARDS KE UPAR */}
+        <motion.div
+          variants={fadeUp(0.15)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 max-w-5xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={infra1}
+              alt="Infrastructure roads and access network"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/45 via-transparent to-transparent" />
+           
+          </div>
+        </motion.div>
+
         {/* MAIN CARDS */}
         <motion.div
           variants={fadeUp(0.2)}
@@ -277,6 +307,32 @@ const Infra = () => {
               </div>
             </div>
           </motion.article>
+        </motion.div>
+
+        {/* BOTTOM IMAGE – CARDS KE NICHE */}
+        <motion.div
+          variants={fadeUp(0.25)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 sm:mt-14 max-w-5xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={infra2}
+              alt="Second view of infrastructure utilities and networks"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/45 via-transparent to-transparent" />
+          
+          </div>
         </motion.div>
 
         {/* PROCESS SECTION */}
