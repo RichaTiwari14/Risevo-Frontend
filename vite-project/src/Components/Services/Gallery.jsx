@@ -13,6 +13,13 @@ import Img6 from "../../images/gallery2.jpeg";
 import Img7 from "../../images/pipe.jpeg";
 import Img8 from "../../images/road1.jpeg";
 import Img9 from "../../images/road2.jpeg";
+import Img10 from "../../images/a.jpeg";
+import Img11 from "../../images/b.jpeg";
+import Img12 from "../../images/c.jpeg";
+import Img13 from "../../images/d.jpeg";
+import Img14 from "../../images/e.jpeg";
+import Img15 from "../../images/infrastrucure1.jpeg";
+import Img16 from "../../images/infrastrucure2.jpeg";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 30 },
@@ -79,6 +86,48 @@ const Gallery = () => {
       title: "Finished Road Surface",
       desc: "Final road layer finished with camber, slopes and edges designed to prevent water stagnation.",
     },
+    {
+      src: Img15,
+      tag: "INFRA",
+      title: "Infra – Roads & Access",
+      desc: "Internal streets and access routes integrated with drainage and utility corridors.",
+    },
+    {
+      src: Img16,
+      tag: "INFRA",
+      title: "Infra – Utilities",
+      desc: "Underground infrastructure laid out with chambers and manholes for easy maintenance.",
+    },
+    {
+      src: Img10,
+      tag: "COMMERCIAL",
+      title: "Under‑Construction Block",
+      desc: "Commercial framework and cores in progress, with clear circulation and service planning.",
+    },
+    {
+      src: Img11,
+      tag: "COMMERCIAL",
+      title: "Completed Commercial Front",
+      desc: "Finished commercial elevation ready for branding, fit‑out and operations.",
+    },
+    {
+      src: Img12,
+      tag: "RESIDENTIAL",
+      title: "Residential Structure",
+      desc: "Multi‑storey residential frame designed for light, ventilation and safe circulation.",
+    },
+    {
+      src: Img13,
+      tag: "TURNKEY",
+      title: "Turnkey Site Execution",
+      desc: "Single‑team turnkey execution – structural, MEP and finishes under one coordinated schedule.",
+    },
+    {
+      src: Img14,
+      tag: "TURNKEY",
+      title: "Ready‑to‑Move Delivery",
+      desc: "Turnkey project at final stage – snag‑free, tested and ready for possession.",
+    },
   ];
 
   return (
@@ -114,11 +163,12 @@ const Gallery = () => {
             <span className="font-semibold text-slate-900">sincerity</span> and
             delivered with{" "}
             <span className="font-semibold text-slate-900">accountability</span>
-            . Here are a few real on‑site moments that reflect how we build.
+            . These real on‑site moments show how we actually build – in
+            structure, finishes, infrastructure and turnkey delivery.
           </p>
         </motion.div>
 
-        {/* Modern grid – equal cards */}
+        {/* Gallery grid */}
         <motion.div
           variants={fadeUp(0.08)}
           initial="hidden"
@@ -155,6 +205,14 @@ const Gallery = () => {
                   loading="lazy"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+
+                {/* Top-right chip */}
+                <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-black/30 px-2 py-1 text-[10px] text-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  View
+                  <FiArrowRight className="w-3 h-3" />
+                </div>
+
+                {/* Tag + title */}
                 <div className="absolute inset-x-3 bottom-3 flex flex-col gap-1">
                   {item.tag && (
                     <span className="inline-flex w-fit items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-800 shadow-sm">
@@ -176,8 +234,6 @@ const Gallery = () => {
             </motion.article>
           ))}
         </motion.div>
-
-       
       </div>
     </section>
   );

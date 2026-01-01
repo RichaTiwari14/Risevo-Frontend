@@ -7,8 +7,12 @@ import {
   FiCheckSquare,
   FiUsers,
   FiLayers,
-  FiArrowLeft,   // 🔹 added
+  FiArrowLeft,
 } from "react-icons/fi";
+
+// 👇 Local images
+import turnkeyTopImg from "../../images/d.jpeg";  // HERO ke niche wali image
+import turnkeyBottomImg from "../../images/e.jpeg"; // niche / footer ke paas wali image
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -163,7 +167,41 @@ const Turnkey = () => {
           </div>
         </motion.div>
 
-        {/* MAIN TURNKEY CARDS (3D-ish) */}
+        {/* TOP IMAGE – d.jpeg (HERO ke baad, cards se pehle) */}
+        <motion.div
+          variants={fadeUp(0.18)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 max-w-5xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={turnkeyTopImg}
+              alt="Turnkey site execution with coordinated trades"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
+            <div className="absolute left-5 bottom-5 right-5">
+              <div className="inline-flex items-center rounded-full bg-sky-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white mb-2 shadow">
+                On‑Site Turnkey Coordination
+              </div>
+              <p className="text-xs sm:text-sm text-slate-100 max-w-xl">
+                Civil, services and finishing teams working on a single, integrated
+                schedule – managed under one turnkey contract.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* MAIN TURNKEY CARDS */}
         <motion.div
           variants={fadeUp(0.2)}
           initial="hidden"
@@ -294,6 +332,41 @@ const Turnkey = () => {
               </div>
             </div>
           </motion.article>
+        </motion.div>
+
+        {/* BOTTOM IMAGE – e.jpeg (cards ke baad, process se pehle) */}
+        <motion.div
+          variants={fadeUp(0.3)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-14 max-w-5xl mx-auto"
+        >
+          <div
+            className="
+              relative overflow-hidden rounded-3xl
+              bg-slate-900/5
+              shadow-[0_18px_60px_rgba(15,23,42,0.25)]
+            "
+          >
+            <img
+              src={turnkeyBottomImg}
+              alt="Completed turnkey project ready for handover"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
+            <div className="absolute left-5 bottom-5 right-5">
+              <div className="inline-flex items-center rounded-full bg-emerald-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white mb-2 shadow">
+                Snag‑Free Turnkey Handover
+              </div>
+              <p className="text-xs sm:text-sm text-slate-100 max-w-xl">
+                A finished project where structure, services and interiors are
+                tested, documented and handed over under a single turnkey
+                contract.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* PROCESS SECTION */}
