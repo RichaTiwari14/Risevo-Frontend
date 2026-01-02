@@ -2,25 +2,51 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SLIDE_INTERVAL = 5000; // 5 seconds
+// ------------------------------------
+// 1) Yaha apni images import karo
+//    File names apne hisaab se change kar sakte ho
+// ------------------------------------
+import Hero1 from "../../images/d.jpeg";
+import Hero2 from "../../images/3.jpeg";
+import Hero3 from "../../images/c.jpeg";
+import Hero4 from "../../images/infrastrucure1.jpeg";
 
-const slides = [
-  "https://images.pexels.com/photos/7931/pexels-photo-7931.jpg",
-  "https://images.pexels.com/photos/8159/pexels-photo.jpg",
-  "https://images.pexels.com/photos/162639/digger-machine-machinery-construction-162639.jpeg",
-  "https://images.pexels.com/photos/3862365/pexels-photo-3862365.jpeg",
-];
+// ------------------------------------
+// 2) Saari images is array me add karo
+//    (jitni chaho utni laga sakte ho)
+// ------------------------------------
+const slides = [Hero1, Hero2, Hero3, Hero4];
+
+const SLIDE_INTERVAL = 5000; // 5 seconds
 
 const SimpleConstructionHero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
+    if (!slides || slides.length <= 1) return; // 1 image hai to auto-slide ki zaroorat nahi
+
     const id = setInterval(
       () => setActiveIndex((prev) => (prev + 1) % slides.length),
       SLIDE_INTERVAL
     );
     return () => clearInterval(id);
   }, []);
+
+  if (!slides || slides.length === 0) {
+    // Agar galti se slides khali ho jaye to simple fallback
+    return (
+      <section
+        id="home"
+        className="relative w-full h-screen overflow-hidden bg-black text-white flex items-center justify-center"
+      >
+        <div className="text-center">
+          <h1 className="text-3xl sm:text-5xl font-extrabold">
+            Please add hero images
+          </h1>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -33,7 +59,7 @@ const SimpleConstructionHero = () => {
           <motion.img
             key={slides[activeIndex]}
             src={slides[activeIndex]}
-            alt="Construction background"
+            alt={`Hero slide ${activeIndex + 1}`}
             className="absolute inset-0 h-full w-full object-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -42,7 +68,7 @@ const SimpleConstructionHero = () => {
           />
         </AnimatePresence>
 
-        {/* Dark overlay like reference */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55" />
       </div>
 
@@ -59,22 +85,16 @@ const SimpleConstructionHero = () => {
             RISEVO PROJECT &amp; DEVELOPERS
           </motion.p>
 
-          {/* Main heading – spacing fix (no big gaps between letters) */}
+          {/* Main heading */}
           <motion.h1
             className="font-extrabold uppercase leading-[1.05] tracking-tight text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] drop-shadow-[0_8px_24px_rgba(0,0,0,0.75)]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
-            <span className="block text-white">
-              BUILD WITH CONFIDENCE
-            </span>
-            <span className="mt-1 block text-amber-400">
-              WITH RISEVO
-            </span>
-            <span className="block text-amber-400">
-              PROJECT DEVELOPERS
-            </span>
+            <span className="block text-white">BUILD WITH CONFIDENCE</span>
+            <span className="mt-1 block text-amber-400">WITH RISEVO</span>
+            <span className="block text-amber-400">PROJECT DEVELOPERS</span>
           </motion.h1>
 
           {/* Sub text */}

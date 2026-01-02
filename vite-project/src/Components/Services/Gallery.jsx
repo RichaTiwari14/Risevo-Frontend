@@ -34,99 +34,67 @@ const Gallery = () => {
   const photos = [
     {
       src: Img1,
-      tag: "STRUCTURE",
-      title: "RCC Columns & Slabs",
-      desc: "Reinforced concrete frame with columns, beams and slabs cast strictly as per structural drawings.",
+      title: "MEP Services",
     },
     {
       src: Img2,
-      tag: "FINISHES",
-      title: "Internal Finishing",
-      desc: "Internal plaster, putty and paint executed with proper levels, lines and corner detailing.",
+      title: "Road Paving",
     },
     {
       src: Img3,
-      tag: "EXECUTION",
-      title: "Site Coordination",
-      desc: "Site engineers and supervisors coordinating daily progress, safety and quality on the ground.",
+      title: "Road Subways WMM Work",
     },
     {
       src: Img4,
-      tag: "FORMWORK",
-      title: "Shuttering & Supports",
-      desc: "Formwork alignment, levels and cover checked thoroughly before each concrete pour.",
+      title: "Road Finishing",
     },
     {
       src: Img5,
-      tag: "SITE OVERVIEW",
-      title: "Multiple Work Fronts",
-      desc: "Multiple zones planned in parallel so the site progresses smoothly without idle time.",
+      title: "Subgrade and Sub‑base",
     },
     {
       src: Img6,
-      tag: "PLANNING",
-      title: "On‑Site Review",
-      desc: "On‑site planning, marking and verification carried out directly with the latest drawings.",
+      title: "Road Subgride Work",
     },
     {
       src: Img7,
-      tag: "UTILITIES",
       title: "Pipeline & Services",
-      desc: "Water and drainage pipelines installed with correct slopes, levels and maintenance access.",
     },
     {
       src: Img8,
-      tag: "ROADS",
-      title: "Road Base Preparation",
-      desc: "Internal road base prepared with proper sub‑base, base course and compaction testing.",
+      title: "Road with Saucer Drain",
     },
     {
       src: Img9,
-      tag: "ROADS",
-      title: "Finished Road Surface",
-      desc: "Final road layer finished with camber, slopes and edges designed to prevent water stagnation.",
+      title: "Road Casting",
     },
     {
       src: Img15,
-      tag: "INFRA",
-      title: "Infra – Roads & Access",
-      desc: "Internal streets and access routes integrated with drainage and utility corridors.",
+      title: "Infrastructure – Shed Work",
     },
     {
       src: Img16,
-      tag: "INFRA",
-      title: "Infra – Utilities",
-      desc: "Underground infrastructure laid out with chambers and manholes for easy maintenance.",
+      title: "Club House",
     },
     {
       src: Img10,
-      tag: "COMMERCIAL",
-      title: "Under‑Construction Block",
-      desc: "Commercial framework and cores in progress, with clear circulation and service planning.",
+      title: "Construction of Main Gate",
     },
     {
       src: Img11,
-      tag: "COMMERCIAL",
-      title: "Completed Commercial Front",
-      desc: "Finished commercial elevation ready for branding, fit‑out and operations.",
+      title: "Rainwater Harvesting",
     },
     {
       src: Img12,
-      tag: "RESIDENTIAL",
-      title: "Residential Structure",
-      desc: "Multi‑storey residential frame designed for light, ventilation and safe circulation.",
+      title: "Service Line Through Town",
     },
     {
       src: Img13,
-      tag: "TURNKEY",
       title: "Turnkey Site Execution",
-      desc: "Single‑team turnkey execution – structural, MEP and finishes under one coordinated schedule.",
     },
     {
       src: Img14,
-      tag: "TURNKEY",
-      title: "Ready‑to‑Move Delivery",
-      desc: "Turnkey project at final stage – snag‑free, tested and ready for possession.",
+      title: "Services with Water Line",
     },
   ];
 
@@ -212,13 +180,8 @@ const Gallery = () => {
                   <FiArrowRight className="w-3 h-3" />
                 </div>
 
-                {/* Tag + title */}
+                {/* Title */}
                 <div className="absolute inset-x-3 bottom-3 flex flex-col gap-1">
-                  {item.tag && (
-                    <span className="inline-flex w-fit items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-800 shadow-sm">
-                      {item.tag}
-                    </span>
-                  )}
                   <h3 className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-slate-100/95">
                     {item.title}
                   </h3>
