@@ -12,8 +12,7 @@ import {
 import { FiArrowLeft } from "react-icons/fi";
 
 // 👇 Local images
-import underConstructionImg from "../../images/a.jpeg"; // header ke paas wali image
-import completedImg from "../../images/b.jpeg";         // footer ke paas wali image
+import underConstructionImg from "../../images/commercial.jpg"; // header ke paas wali image
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -400,32 +399,7 @@ const Commercial = () => {
           </div>
         </motion.div>
 
-        {/* BOTTOM IMAGE – footer ke paas (b.jpeg) */}
-        <motion.div
-          variants={fadeUp(0.7)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-16 sm:mt-20 max-w-5xl mx-auto"
-        >
-          <div
-            className="
-              relative overflow-hidden rounded-3xl
-              bg-slate-900/5
-              shadow-[0_20px_70px_rgba(15,23,42,0.3)]
-            "
-          >
-            <img
-              src={completedImg}
-              alt="Completed commercial project with retail and offices"
-              className="w-full h-64 sm:h-80 md:h-96 object-cover"
-              loading="lazy"
-            />
-            {/* subtle gradient overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/25 to-transparent" />
-           
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

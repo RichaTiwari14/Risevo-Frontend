@@ -10,8 +10,8 @@ import {
 } from "react-icons/fi";
 
 // Local images (2 images)
-import infra1 from "../../images/infrastrucure1.jpeg";
-import infra2 from "../../images/infrastrucure2.jpeg";
+import infra1 from "../../images/c.jpeg";
+import infra2 from "../../images/4.jpeg";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
