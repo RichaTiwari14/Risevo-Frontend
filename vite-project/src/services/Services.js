@@ -256,3 +256,108 @@ export const GetDashboardData = async () => {
     return null;
   }
 };
+
+export const GetCareers  = async () => {
+
+  try {
+    const response = await API.get("career/");
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const CreateCareer  = async (formData) => {
+  const access = JSON.parse(localStorage.getItem("access"));
+
+  try {
+    const response = await API.post("career/", formData, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const UpdateCareer  = async (id, formData) => {
+  const access = JSON.parse(localStorage.getItem("access"));
+
+  try {
+    const response = await API.patch(`career/${id}/`, formData, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const DeleteCareer  = async (id) => {
+  const access = JSON.parse(localStorage.getItem("access"));
+
+  try {
+    const response = await API.delete(`career/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const ApplyJob  = async (formData) => {
+  const access = JSON.parse(localStorage.getItem("access"));
+  try {
+    const response = await API.post("job-apply/", formData, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+         "Content-Type": "multipart/form-data",
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const GetApplications  = async () => {
+  const access = JSON.parse(localStorage.getItem("access"));
+  try {
+    const response = await API.get("job-apply/", {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
+
+export const DeleteApplication  = async (id) => {
+  const access = JSON.parse(localStorage.getItem("access"));
+  try {
+    const response = await API.delete(`job-apply/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return null;
+  }
+};
