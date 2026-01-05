@@ -158,8 +158,28 @@ const CareersSection = () => {
               <textarea name="cover_letter" rows={3} required className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100" />
 
               {/* Resume */}
-              <input name="resume" type="file" accept=".pdf,.doc,.docx" required />
-
+{/* Resume Upload - Replace your current input */}
+<div>
+  <label className="text-xs text-slate-200 mb-1 block">Resume / CV</label>
+  <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-sky-500/40 rounded-xl bg-slate-900/60 cursor-pointer hover:border-sky-400 hover:bg-slate-800/60 transition-all duration-300">
+    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+      <svg className="w-8 h-8 mb-2 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+      <p className="text-sm text-slate-300">
+        <span className="text-sky-400 font-medium">Click to upload</span> or drag & drop
+      </p>
+      <p className="text-xs text-slate-500 mt-1">PDF, DOC, DOCX (Max 5MB)</p>
+    </div>
+    <input 
+      name="resume" 
+      type="file" 
+      accept=".pdf,.doc,.docx" 
+      required 
+      className="hidden" 
+    />
+  </label>
+</div>
               <button
                 disabled={submitting}
                 className="rounded-lg bg-sky-400 px-4 py-2 text-[11px] font-semibold text-slate-950"
