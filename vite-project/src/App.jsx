@@ -45,10 +45,10 @@ import CareersSection from "./Components/CareersSection/CareersSection.jsx";
 function App() {
   const location = useLocation();
 
-  const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
+  const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list", "/career-list", "/job-applicants"];
   const shouldShowNav = !hideNavRoutes.includes(location.pathname);
 
-  const hideFloatingLogoRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
+  const hideFloatingLogoRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list", "/career-list", "/job-applicants"];
   const shouldShowFloatingLogo = !hideFloatingLogoRoutes.includes(location.pathname);
 
   // Route / hash change pe scroll handle
