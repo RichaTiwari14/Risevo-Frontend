@@ -37,22 +37,33 @@ import WhatsAppIcon from "./Components/Whatsapp/Whatsapp.jsx";
 import FloatingSocials from "./Components/Whatsapp/Floating.jsx";
 import FloatingLogo from "./Components/Whatsapp/Logo.jsx";
 
+// Careers section import
+import CareersSection from "./Components/CareersSection/CareersSection.jsx";
+
 function App() {
   const location = useLocation();
 
   const hideNavRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
   const shouldShowNav = !hideNavRoutes.includes(location.pathname);
 
-  // Floating logo ko bhi admin / login pages pe hide karna ho to:
   const hideFloatingLogoRoutes = ["/login", "/dashboard", "/admin-list", "/employee-list", "/enquiry-list"];
   const shouldShowFloatingLogo = !hideFloatingLogoRoutes.includes(location.pathname);
 
-  // ✅ Har route change par page ko bilkul top pe le aao
+  // Route / hash change pe scroll handle
   useLayoutEffect(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo(0, 0);
+    if (typeof window === "undefined") return;
+
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
     }
-  }, [location.pathname]);
+
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <AuthProvider>
@@ -81,8 +92,6 @@ function App() {
       />
 
       {shouldShowNav && <Header />}
-
-      {/* ✅ Floating logo yaha rakha – ab har page pe (client side) dikhenga */}
       {shouldShowFloatingLogo && <FloatingLogo />}
 
       <Routes>
@@ -92,14 +101,25 @@ function App() {
           element={
             <>
               <Home />
-              {/* ⛔ yaha se FloatingLogo hata diya, kyunki ab upar global hai */}
               <Services />
               <VisionMission />
               <Cards />
+              {/* Yaha se CareersSection hata diya */}
               <Testimonials />
               <WhatsAppIcon />
               <FloatingSocials />
               <Faq />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* NEW: Careers page as separate route */}
+        <Route
+          path="/careers"
+          element={
+            <>
+              <CareersSection />
               <Footer />
             </>
           }

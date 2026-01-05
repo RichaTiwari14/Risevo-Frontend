@@ -78,7 +78,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="text-lg sm:text-xl font-extrabold text-white">
-              Risevo Construction
+              Risevo Project & Developers
             </h3>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
               From residential homes to large infrastructure, Risevo delivers

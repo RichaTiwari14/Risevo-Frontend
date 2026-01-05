@@ -62,9 +62,7 @@ const Header = () => {
           <div className="relative">
             <button
               type="button"
-              onClick={() =>
-                setDesktopServicesOpen((prev) => !prev)
-              }
+              onClick={() => setDesktopServicesOpen((prev) => !prev)}
               className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200 flex items-center gap-2"
               aria-haspopup="true"
               aria-expanded={desktopServicesOpen}
@@ -141,6 +139,14 @@ const Header = () => {
             DIRECTOR
           </Link>
 
+          {/* CAREERS → separate page */}
+          <Link
+            to="/careers"
+            className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
+          >
+            CAREERS
+          </Link>
+
           <Link
             to="/gallery"
             className="px-4 py-2 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all duration-200"
@@ -192,9 +198,7 @@ const Header = () => {
             {/* Mobile Services */}
             <div className="border-b border-white/10">
               <button
-                onClick={() =>
-                  setMobileServicesOpen((prev) => !prev)
-                }
+                onClick={() => setMobileServicesOpen((prev) => !prev)}
                 className="w-full text-left px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 transition-all flex items-center justify-between"
               >
                 <span>Services</span>
@@ -224,7 +228,7 @@ const Header = () => {
             <Link
               to="/about"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
             >
               About
             </Link>
@@ -232,7 +236,7 @@ const Header = () => {
             <Link
               to="/foundation"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg:white/8 border-b border-white/10 transition-all"
             >
               Foundation
             </Link>
@@ -240,7 +244,7 @@ const Header = () => {
             <Link
               to="/leadership"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg:white/8 border-b border-white/10 transition-all"
             >
               Director
             </Link>
@@ -248,9 +252,18 @@ const Header = () => {
             <Link
               to="/gallery"
               onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
+              className="block px-4 py-2.5 rounded-lg text:white/80 hover:text-amber-400 hover:bg:white/8 border-b border:white/10 transition-all"
             >
               Gallery
+            </Link>
+
+            {/* Careers in mobile → separate page */}
+            <Link
+              to="/careers"
+              onClick={closeMenu}
+              className="block px-4 py-2.5 rounded-lg text-white/80 hover:text-amber-400 hover:bg-white/8 border-b border-white/10 transition-all"
+            >
+              Careers
             </Link>
 
             <Link
