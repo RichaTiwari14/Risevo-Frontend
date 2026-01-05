@@ -9,6 +9,8 @@ import AdminList from './pages/AdminList';
 import EmployeeList from './pages/EmployeeList';
 import EnquiryList from './pages/EnquiryList';
 import Header from "./Components/Nav/Nav.jsx";
+import CareerList from "./pages/CareerList.jsx";
+import JobApplicants from "./pages/JobApplicants.jsx";
 
 import Home from "./Components/Home/Home.jsx";
 import Services from "./Components/Services/Services.jsx";
@@ -195,6 +197,8 @@ function App() {
           <Route path="/admin-list" element={<AdminList />} />
           <Route path="/employee-list" element={<EmployeeList />} />
           <Route path="/enquiry-list" element={<EnquiryList />} />
+          <Route path="/career-list" element={<CareerList />} />
+          <Route path="/job-applicants" element={<JobApplicants />} />
         </Route>
       </Routes>
     </AuthProvider>

@@ -317,14 +317,8 @@ export const DeleteCareer  = async (id) => {
 };
 
 export const ApplyJob  = async (formData) => {
-  const access = JSON.parse(localStorage.getItem("access"));
   try {
-    const response = await API.post("job-apply/", formData, {
-      headers: {
-        Authorization: `Bearer ${access}`,
-         "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await API.post("job-apply/", formData);
     return response.data;
   } catch (err) {
     console.error("Dashboard error:", err);

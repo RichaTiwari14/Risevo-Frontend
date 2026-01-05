@@ -6,6 +6,7 @@ import {
   UserCog,
   MessageSquare,
   LogOut,
+  Briefcase, User
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -17,6 +18,8 @@ const Sidebar = () => {
     { path: "/admin-list", name: "Admin List", icon: UserCog },
     { path: "/employee-list", name: "Employee List", icon: Users },
     { path: "/enquiry-list", name: "Enquiries", icon: MessageSquare },
+    { path: "/career-list", name: "Careers", icon: Briefcase },
+    { path: "/job-applicants", name: "Job Applicants", icon: User },
   ];
 
   return (
