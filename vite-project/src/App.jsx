@@ -34,7 +34,7 @@ import Quality from "./Components/Cards/Quality.jsx";
 import Land from "./Components/Cards/Land.jsx";
 import Foundation from "./Components/About/Foundation.jsx";
 import WhatsAppIcon from "./Components/Whatsapp/Whatsapp.jsx";
-import FloatingSocials from "./Components/Whatsapp/Floating.jsx";
+// import FloatingSocials from "./Components/Whatsapp/Floating.jsx";
 import FloatingLogo from "./Components/Whatsapp/Logo.jsx";
 
 // Careers section import
@@ -92,7 +92,7 @@ function App() {
       />
 
       {shouldShowNav && <Header />}
-      {shouldShowFloatingLogo && <FloatingLogo />}
+      {/* {shouldShowFloatingLogo && <FloatingLogo />} */}
 
       <Routes>
         {/* Home page */}
@@ -107,7 +107,7 @@ function App() {
               {/* Yaha se CareersSection hata diya */}
               <Testimonials />
               <WhatsAppIcon />
-              <FloatingSocials />
+              {/* <FloatingSocials /> */}
               <Faq />
               <Footer />
             </>
