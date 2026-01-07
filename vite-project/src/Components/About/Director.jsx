@@ -48,39 +48,39 @@ const directors = [
 
 const LeadershipPage = () => {
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-24 pb-16 overflow-hidden">
+    <main className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-28 sm:pt-32 lg:pt-36 pb-16 overflow-hidden">
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl opacity-70" />
+        <div className="absolute -top-20 -left-32 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl opacity-70" />
         <div className="absolute bottom-[-120px] right-[-100px] h-80 w-80 rounded-full bg-amber-400/20 blur-3xl opacity-70" />
-        <div className="absolute inset-x-0 top-40 h-64 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 top-48 h-64 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {/* Top Bar: Back (left) + Login (right) */}
-        <div className="mb-10 flex items-center justify-between gap-4">
+        <div className="mb-10 sm:mb-12 flex items-center justify-between gap-4 pt-2 sm:pt-4">
           {/* Back button - Left */}
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700/60 bg-slate-900/70 text-slate-100 text-sm font-medium shadow-sm hover:bg-slate-800 hover:border-slate-500 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-slate-700/60 bg-slate-900/70 text-slate-100 text-sm font-medium shadow-sm hover:bg-slate-800 hover:border-slate-500 transition-colors"
           >
             <FiArrowLeft className="w-4 h-4" />
             Back
           </a>
 
-          {/* Login button - Right (dark blue, premium) */}
+          {/* Login button - Right */}
           <a
             href="/login"
-            className="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white text-sm font-semibold shadow-lg shadow-blue-900/40 hover:from-blue-800 hover:via-blue-700 hover:to-blue-500 transition-colors border border-blue-400/40"
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white text-sm font-semibold shadow-lg shadow-blue-900/40 hover:from-blue-800 hover:via-blue-700 hover:to-blue-500 transition-colors border border-blue-400/40"
           >
             Login
           </a>
         </div>
 
         {/* Philosophy Section */}
-        <section className="mt-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-1 rounded-full bg-slate-900/70 border border-slate-700 text-xs font-medium uppercase tracking-[0.2em] text-slate-300 mb-5">
+        <section className="mt-10 sm:mt-12">
+          <div className="text-center mb-12 sm:mb-14">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-900/70 border border-slate-700 text-xs font-medium uppercase tracking-[0.2em] text-slate-300 mb-5">
               Our Philosophy
             </div>
 
@@ -93,17 +93,17 @@ const LeadershipPage = () => {
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-300/90 max-w-2xl mx-auto">
-              At RISEVO Project &amp; Developers, construction is measured by
+              At RISEVO Project & Developers, construction is measured by
               trust preserved and standards set for the future.
             </p>
           </div>
 
           {/* Philosophy Cards */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {/* Left Column */}
-            <div className="space-y-6">
+            <div className="space-y-6 sm:space-y-8">
               {/* Card 1 */}
-              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 sm:p-7 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/70 to-transparent" />
                 <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Core Philosophy
@@ -116,7 +116,7 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 2 */}
-              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 sm:p-7 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent" />
                 <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Three Key Questions
@@ -129,7 +129,7 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 3 */}
-              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 sm:p-7 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
                 <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Our Respect
@@ -142,9 +142,9 @@ const LeadershipPage = () => {
             </div>
 
             {/* Right Column */}
-            <div className="space-y-6">
+            <div className="space-y-6 sm:space-y-8">
               {/* Card 4 */}
-              <div className="relative bg-gradient-to-br from-blue-950/70 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 border border-blue-600/60 shadow-xl shadow-blue-900/40 backdrop-blur">
+              <div className="relative bg-gradient-to-br from-blue-950/70 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 sm:p-7 border border-blue-600/60 shadow-xl shadow-blue-900/40 backdrop-blur">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15),_transparent_60%)] pointer-events-none" />
                 <h3 className="relative text-blue-200 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Legendary Thinking
@@ -158,7 +158,7 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 5 */}
-              <div className="relative bg-slate-900/70 rounded-2xl p-6 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
+              <div className="relative bg-slate-900/70 rounded-2xl p-6 sm:p-7 border border-slate-700/70 shadow-xl shadow-black/30 backdrop-blur">
                 <h3 className="text-blue-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   The RISEVO Standard
                 </h3>
@@ -169,7 +169,7 @@ const LeadershipPage = () => {
               </div>
 
               {/* Card 6 */}
-              <div className="relative bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 border border-amber-400/70 shadow-xl shadow-amber-900/30 backdrop-blur">
+              <div className="relative bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-900/80 rounded-2xl p-6 sm:p-7 border border-amber-400/70 shadow-xl shadow-amber-900/30 backdrop-blur">
                 <h3 className="text-amber-300 font-semibold text-xs uppercase tracking-[0.25em] mb-3">
                   Founder's Statement
                 </h3>
@@ -182,22 +182,22 @@ const LeadershipPage = () => {
         </section>
 
         {/* Leadership Team Section */}
-        <section className="mt-20">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-1 rounded-full bg-blue-500/10 border border-blue-400/40 text-xs font-medium uppercase tracking-[0.25em] text-blue-200 mb-4">
+        <section className="mt-16 sm:mt-20">
+          <div className="text-center mb-14 sm:mb-16">
+            <div className="inline-flex items-center px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/40 text-xs font-medium uppercase tracking-[0.25em] text-blue-200 mb-5">
               Leadership
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-50 mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-50 mb-5">
               OUR LEADERSHIP TEAM
             </h2>
             <p className="text-base md:text-lg text-slate-300/90 max-w-2xl mx-auto">
-              Each director combines deep experience with our founder&apos;s
+              Each director combines deep experience with our founder's
               philosophy of legacy, integrity, and long-term thinking.
             </p>
           </div>
 
           {/* Directors Grid */}
-          <div className="space-y-10 md:space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             {directors.map((director, index) => {
               const isEven = index % 2 === 0;
 
@@ -209,7 +209,7 @@ const LeadershipPage = () => {
                   {/* Accent gradient line */}
                   <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400" />
 
-                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center px-6 py-7 md:px-8 md:py-8">
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center px-6 sm:px-7 py-7 sm:py-8">
                     {/* Image + Name/Role panel */}
                     <div
                       className={
@@ -230,7 +230,7 @@ const LeadershipPage = () => {
                         </div>
 
                         {/* Footer panel with name and role */}
-                        <div className="border-t border-slate-700/80 bg-black/80 px-4 py-3">
+                        <div className="border-t border-slate-700/80 bg-black/80 px-4 py-3 sm:py-4">
                           <p className="text-[0.65rem] font-semibold text-blue-200/80 uppercase tracking-[0.25em]">
                             {director.role}
                           </p>

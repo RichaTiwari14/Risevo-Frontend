@@ -1,416 +1,317 @@
-// "use client";
+'use client';
 
-// import React, { useEffect, useState } from "react";
-// import { Briefcase, MapPin, Clock, ArrowRight } from "lucide-react";
-// import { GetCareers, ApplyJob } from "../../services/Services";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Briefcase, MapPin, Clock, ArrowRight } from "lucide-react";
+import { FiArrowLeft } from "react-icons/fi";
 
-// const CareersSection = () => {
-//   const [positions, setPositions] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [filterJob, setFilterJob] = useState("all");
-//   const [formCareer, setFormCareer] = useState(""); // career id
-//   const [submitting, setSubmitting] = useState(false);
-
-//   // fetch careers from API
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const res = await GetCareers();
-//       if (res) setPositions(res);
-//       setLoading(false);
-//     };
-//     fetchData();
-//   }, []);
-
-//   const visiblePositions =
-//     filterJob === "all"
-//       ? positions
-//       : positions.filter((job) => String(job.id) === String(filterJob));
-
-//   const handleApplyClick = (careerId) => {
-//     setFormCareer(careerId);
-//     // scroll to form smoothly
-//     document.getElementById("apply-form")?.scrollIntoView({ behavior: "smooth" });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setSubmitting(true);
-
-//     const formData = new FormData(e.target);
-//     formData.append("career", formCareer); // ensure FK id goes
-
-//     const res = await ApplyJob(formData);
-
-//     if (res) {
-//       alert("Application submitted successfully 🎉");
-//       e.target.reset();
-//       setFormCareer("");
-//     } else {
-//       alert("Something went wrong. Please try again.");
-//     }
-
-//     setSubmitting(false);
-//   };
-
-//   return (
-//     <section className="relative overflow-hidden bg-[#020617] py-12 sm:py-16 lg:py-20">
-//       <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-
-//         {/* ------------ JOB LIST ------------- */}
-//         <div className="space-y-6 lg:space-y-7">
-//           <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 p-5">
-//             <div className="flex justify-between mb-4">
-//               <h3 className="text-lg font-semibold text-slate-50">
-//                 CURRENT OPPORTUNITIES
-//               </h3>
-
-//               <select
-//                 value={filterJob}
-//                 onChange={(e) => setFilterJob(e.target.value)}
-//                 className="rounded-lg border border-sky-500/40 bg-slate-900/70 px-3 py-1.5 text-xs text-slate-100"
-//               >
-//                 <option value="all">All Positions</option>
-//                 {positions.map((job) => (
-//                   <option key={job.id} value={job.id}>
-//                     {job.designation}
-//                   </option>
-//                 ))}
-//               </select>
-//             </div>
-
-//             {loading ? (
-//               <p className="text-slate-400 text-sm">Loading jobs…</p>
-//             ) : visiblePositions.length === 0 ? (
-//               <p className="text-slate-400 text-sm">No openings found.</p>
-//             ) : (
-//               <div className="space-y-2.5">
-//                 {visiblePositions.map((job) => (
-//                   <div
-//                     key={job.id}
-//                     className="rounded-xl border border-sky-500/20 bg-slate-900/50 p-4"
-//                   >
-//                     <div className="flex justify-between">
-//                       <h4 className="text-slate-50 font-semibold">
-//                         {job.designation}
-//                       </h4>
-
-//                       <button
-//                         onClick={() => handleApplyClick(job.id)}
-//                         className="text-[11px] flex items-center gap-1 px-3 py-1 rounded-md bg-sky-500/20 text-sky-200"
-//                       >
-//                         Apply
-//                         <ArrowRight size={12} />
-//                       </button>
-//                     </div>
-
-//                     <div className="flex gap-4 text-xs text-slate-300 mt-1">
-//                       <span className="flex items-center gap-1">
-//                         <MapPin size={14} />
-//                         {job.location}
-//                       </span>
-//                       <span className="flex items-center gap-1">
-//                         <Clock size={14} />
-//                         {job.experience}
-//                       </span>
-//                     </div>
-//                   </div>
-//                 ))}
-//               </div>
-//             )}
-//           </div>
-
-//           {/* ------------- APPLY FORM --------------- */}
-//           <div id="apply-form" className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 p-5">
-//             <h3 className="text-base font-semibold text-slate-50">
-//               Job Application
-//             </h3>
-
-//             <form onSubmit={handleSubmit} className="space-y-3" encType="multipart/form-data">
-//               {/* Position dropdown (career id) */}
-//               <div>
-//                 <label className="text-xs text-slate-200">Position</label>
-//                 <select
-//                   name="career"
-//                   value={formCareer}
-//                   onChange={(e) => setFormCareer(e.target.value)}
-//                   required
-//                   className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100"
-//                 >
-//                   <option value="">Select a role</option>
-//                   {positions.map((job) => (
-//                     <option key={job.id} value={job.id}>
-//                       {job.designation}
-//                     </option>
-//                   ))}
-//                 </select>
-//               </div>
-
-//               {/* Name */}
-//               <input name="name" required placeholder="Full Name" className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100" />
-
-//               {/* Email */}
-//               <input name="email" type="email" required placeholder="Email" className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100" />
-
-//               {/* Contact */}
-//               <input name="contact_no" required placeholder="Contact Number" className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100" />
-
-//               {/* Cover Letter */}
-//               <textarea name="cover_letter" rows={3} required className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100" />
-
-//               {/* Resume */}
-// {/* Resume Upload - Replace your current input */}
-// <div>
-//   <label className="text-xs text-slate-200 mb-1 block">Resume / CV</label>
-//   <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-sky-500/40 rounded-xl bg-slate-900/60 cursor-pointer hover:border-sky-400 hover:bg-slate-800/60 transition-all duration-300">
-//     <div className="flex flex-col items-center justify-center pt-5 pb-6">
-//       <svg className="w-8 h-8 mb-2 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-//       </svg>
-//       <p className="text-sm text-slate-300">
-//         <span className="text-sky-400 font-medium">Click to upload</span> or drag & drop
-//       </p>
-//       <p className="text-xs text-slate-500 mt-1">PDF, DOC, DOCX (Max 5MB)</p>
-//     </div>
-//     <input 
-//       name="resume" 
-//       type="file" 
-//       accept=".pdf,.doc,.docx" 
-//       required 
-//       className="hidden" 
-//     />
-//   </label>
-// </div>
-//               <button
-//                 disabled={submitting}
-//                 className="rounded-lg bg-sky-400 px-4 py-2 text-[11px] font-semibold text-slate-950"
-//               >
-//                 {submitting ? "Submitting…" : "Apply Now"}
-//               </button>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CareersSection;
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { MapPin, Clock, ArrowRight, CheckCircle2, Upload } from "lucide-react";
-import { GetCareers, ApplyJob } from "../../services/Services";
+const positions = [
+  {
+    title: "Site Engineer",
+    type: "Full-time",
+    location: "Pune, Maharashtra",
+    experience: "3+ years",
+  },
+  {
+    title: "Project Manager",
+    type: "Full-time",
+    location: "Mumbai, Maharashtra",
+    experience: "5+ years",
+  },
+  {
+    title: "Junior Architect",
+    type: "Full-time",
+    location: "Hybrid / Pune",
+    experience: "1–3 years",
+  },
+];
 
 const CareersSection = () => {
-  const [positions, setPositions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [filterJob, setFilterJob] = useState("all");
   const [formCareer, setFormCareer] = useState("");
-  const [resumeFile, setResumeFile] = useState(null);
-  const [submitting, setSubmitting] = useState(false);
 
-  useEffect(() => {
-    const load = async () => {
-      const res = await GetCareers();
-      if (res) setPositions(res);
-      setLoading(false);
-    };
-    load();
-  }, []);
+  const visiblePositions =
+    filterJob === "all"
+      ? positions
+      : positions.filter((job) => job.title === filterJob);
 
-  const handleApplyClick = (careerId) => {
-    setFormCareer(careerId);
-    document.getElementById("apply-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitting(true);
-
     const formData = new FormData(e.target);
-    formData.append("career", formCareer);
-
-    const res = await ApplyJob(formData);
-    if (res) {
-      setResumeFile(null);
-      e.target.reset();
-      setFormCareer("");
-      alert("Application submitted 🎉");
-    } else {
-      alert("Something went wrong.");
-    }
-
-    setSubmitting(false);
+    alert("Form submitted (front-end). Backend se connect yahan karo.");
   };
 
   return (
-    <section className="relative bg-[#020617] py-14">
-      <div className="mx-auto max-w-6xl px-4 space-y-10">
+    <section
+      id="careers"
+      className="relative overflow-hidden bg-[#020617] pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20"
+    >
+      {/* Background glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/12 blur-3xl" />
+        <div className="absolute -bottom-40 -right-10 h-72 w-72 rounded-full bg-sky-500/12 blur-3xl" />
+      </div>
 
-        {/* ================= JOB GRID ================= */}
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Current Openings
-          </h3>
-          <p className="text-sm text-slate-400 mb-4">
-            Select a role and apply in one click
-          </p>
-
-          {loading ? (
-            <p className="text-slate-400 text-sm">Loading...</p>
-          ) : positions.length === 0 ? (
-            <p className="text-slate-400 text-sm">No openings right now.</p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {positions.map((job) => (
-                <div
-                  key={job.id}
-                  className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 shadow-lg hover:shadow-cyan-500/10 hover:border-sky-400/30 transition"
-                >
-                  <h4 className="text-white font-semibold text-sm mb-1">
-                    {job.designation}
-                  </h4>
-
-                  <div className="text-xs text-slate-300 space-y-1 mb-3">
-                    <p className="flex items-center gap-1">
-                      <MapPin size={14} /> {job.location}
-                    </p>
-                    <p className="flex items-center gap-1">
-                      <Clock size={14} /> {job.experience}
-                    </p>
-                  </div>
-
-                  <button
-                    onClick={() => handleApplyClick(job.id)}
-                    className="w-full rounded-lg bg-sky-500/20 text-sky-200 border border-sky-500/40 px-3 py-1.5 text-[11px] flex items-center justify-center gap-1 hover:bg-sky-500/30 transition"
-                  >
-                    Apply Now <ArrowRight size={12} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
+      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        {/* Back to Home - FIXED BADHIYA SA */}
+        <div className="mb-6 sm:mb-8 flex items-center justify-between pt-2 sm:pt-3">
+          <motion.a
+            href="/"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="
+              group inline-flex items-center gap-1.5
+              rounded-full border border-sky-400/60
+              bg-sky-500/10 px-3 py-1.5
+              text-xs font-semibold uppercase tracking-[0.2em]
+              text-sky-100 hover:text-white
+              hover:border-sky-400 hover:bg-sky-500/20
+              shadow-md hover:shadow-lg
+              transition-all duration-200 backdrop-blur-sm
+            "
+          >
+            <FiArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Back</span>
+          </motion.a>
         </div>
 
-        {/* ================= FORM - COMPACT & BALANCED ================= */}
-        <div
-          id="apply-form"
-          className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl p-6"
-        >
-          <h3 className="text-lg font-semibold text-white mb-1">
-            Job Application
-          </h3>
-          <p className="text-sm text-slate-400 mb-4">
-            Fill your details & upload resume
+        {/* Heading center me */}
+        <div className="max-w-3xl mx-auto space-y-3 mb-7 sm:mb-8 text-center pt-2 sm:pt-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-400">
+            Careers
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            encType="multipart/form-data"
-            className="space-y-4"
-          >
-            {/* Position */}
-            <div>
-              <label className="text-xs text-slate-300 mb-1 block">
-                Position
-              </label>
-              <select
-                name="career"
-                value={formCareer}
-                onChange={(e) => setFormCareer(e.target.value)}
-                required
-                className="w-full rounded-lg border border-white/20 bg-black/40 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500/50 outline-none"
-              >
-                <option value="">Select position</option>
-                {positions.map((job) => (
-                  <option key={job.id} value={job.id}>
-                    {job.designation}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-50">
+            SHAPE YOUR{" "}
+            <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+              CAREER WITH RISEVO
+            </span>
+          </h2>
 
-            {/* Fields */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <input
-                name="name"
-                required
-                placeholder="Full Name"
-                className="rounded-lg border border-white/20 bg-black/40 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500/50 outline-none"
-              />
-              <input
-                name="email"
-                type="email"
-                required
-                placeholder="Email"
-                className="rounded-lg border border-white/20 bg-black/40 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500/50 outline-none"
-              />
-              <input
-                name="contact_no"
-                required
-                placeholder="Contact Number"
-                className="rounded-lg border border-white/20 bg-black/40 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500/50 outline-none md:col-span-2"
-              />
-            </div>
+          <p className="text-sm sm:text-base text-slate-300/85 leading-relaxed">
+            Join a team that delivers technically sound, design-driven and
+            responsibly executed projects. At Risevo, you collaborate with
+            experienced professionals across engineering, project management and
+            on-ground execution.
+          </p>
 
-            {/* Cover Letter */}
-            <textarea
-              name="cover_letter"
-              rows={4}
-              required
-              placeholder="Short introduction / experience summary"
-              className="w-full rounded-lg border border-white/20 bg-black/40 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-sky-500/50 outline-none"
-            />
+          <div className="mt-2 flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs">
+            <span className="rounded-full border border-cyan-400/25 bg-cyan-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
+              On-site project roles
+            </span>
+            <span className="rounded-full border border-sky-400/25 bg-sky-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
+              Design & engineering
+            </span>
+            <span className="rounded-full border border-emerald-400/25 bg-emerald-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
+              Project management
+            </span>
+          </div>
+        </div>
 
-            {/* Resume Upload */}
-            <div>
-              <label className="text-xs text-slate-300 mb-1 block">
-                Resume / CV
-              </label>
+        <div className="space-y-6 lg:space-y-7">
+          {/* JOBS CARD */}
+          <div className="w-full">
+            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)] pt-3">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-5">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-50">
+                    CURRENT OPPORTUNITIES
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400">
+                    Explore openings across engineering, site management and
+                    design.
+                  </p>
+                </div>
 
-              <label
-                className={`flex flex-col items-center justify-center w-full h-28 border-2 border-dashed rounded-xl transition
-                  ${
-                    resumeFile
-                      ? "border-emerald-400/60 bg-emerald-500/5"
-                      : "border-sky-400/40 bg-black/40 hover:bg-black/60"
-                  }
-                `}
-              >
-                {!resumeFile ? (
-                  <>
-                    <Upload className="w-6 h-6 text-sky-400 mb-1" />
-                    <p className="text-sm text-slate-300">
-                      Click to upload or drag & drop
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      PDF / DOC / DOCX (Max 5MB)
-                    </p>
-                  </>
-                ) : (
-                  <div className="flex items-center gap-2 text-emerald-300 font-medium">
-                    <CheckCircle2 className="w-5 h-5" />
-                    {resumeFile.name}
+                <div className="flex flex-col items-stretch sm:items-end gap-2">
+                  <div className="hidden sm:flex items-center gap-2 rounded-full border border-sky-500/40 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-sky-300 bg-sky-500/6">
+                    <Briefcase size={14} />
+                    <span>Now Hiring</span>
                   </div>
+
+                  <select
+                    value={filterJob}
+                    onChange={(e) => setFilterJob(e.target.value)}
+                    className="min-w-[180px] rounded-lg border border-sky-500/40 bg-slate-900/70 px-3 py-1.5 text-[11px] sm:text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                  >
+                    <option value="all">All Positions</option>
+                    {positions.map((job) => (
+                      <option key={job.title} value={job.title}>
+                        {job.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2.5">
+                {visiblePositions.map((job) => (
+                  <div
+                    key={job.title}
+                    className="group rounded-2xl border border-sky-500/15 bg-slate-900/40 hover:bg-slate-900/70 transition-all duration-200 px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col gap-2 sm:gap-2.5 pt-2"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-sm sm:text-base font-semibold text-slate-50">
+                        {job.title}
+                      </h4>
+                      <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.15em] text-sky-300">
+                        {job.type}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3 text-[11px] sm:text-xs text-slate-300/80">
+                      <span className="inline-flex items-center gap-1">
+                        <MapPin size={14} className="text-cyan-400" />
+                        {job.location}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Clock size={14} className="text-cyan-400" />
+                        {job.experience} experience
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-slate-400">
+                        Click apply to pre-fill the form for this role and
+                        submit your details.
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {visiblePositions.length === 0 && (
+                  <p className="text-sm text-slate-400">
+                    No positions found for the selected role.
+                  </p>
                 )}
-
-                <input
-                  type="file"
-                  name="resume"
-                  accept=".pdf,.doc,.docx"
-                  required
-                  className="hidden"
-                  onChange={(e) => setResumeFile(e.target.files[0])}
-                />
-              </label>
+              </div>
             </div>
+          </div>
 
-            <button
-              disabled={submitting}
-              className="w-full rounded-lg bg-gradient-to-r from-sky-400 to-cyan-300 px-5 py-2.5 text-[12px] font-semibold text-slate-900 shadow hover:scale-[1.01] active:scale-95 transition disabled:opacity-60"
-            >
-              {submitting ? "Submitting…" : "Submit Application"}
-            </button>
-          </form>
+          {/* FORM CARD */}
+          <div className="w-full">
+            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)] space-y-4 pt-3">
+              <h3 className="text-base sm:text-lg font-semibold text-slate-50">
+                Job Application
+              </h3>
+              <p className="text-sm text-slate-300/85 leading-relaxed">
+                Fill in your details to apply. Our HR team will review your
+                application and contact you if there's a match.
+              </p>
+
+              <form className="space-y-3" onSubmit={handleSubmit} encType="multipart/form-data">
+                <div className="space-y-1.5">
+                  <label htmlFor="career" className="text-xs font-medium text-slate-200">
+                    Position (Career)
+                  </label>
+                  <select
+                    id="career"
+                    name="career"
+                    value={formCareer}
+                    onChange={(e) => setFormCareer(e.target.value)}
+                    className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                    required
+                  >
+                    <option value="">Select a role</option>
+                    {positions.map((job) => (
+                      <option key={job.title} value={job.title}>
+                        {job.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-xs font-medium text-slate-200">
+                      Full Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-xs font-medium text-slate-200">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="contact_no" className="text-xs font-medium text-slate-200">
+                    Contact Number
+                  </label>
+                  <input
+                    id="contact_no"
+                    name="contact_no"
+                    type="tel"
+                    className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                    placeholder="+91-XXXXXXXXXX"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="cover_letter" className="text-xs font-medium text-slate-200">
+                    Cover Letter
+                  </label>
+                  <textarea
+                    id="cover_letter"
+                    name="cover_letter"
+                    rows={4}
+                    className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/70"
+                    placeholder="Brief about your experience and key projects…"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="resume" className="text-xs font-medium text-slate-200">
+                    Resume (PDF / DOC)
+                  </label>
+                  <input
+                    id="resume"
+                    name="resume"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    required
+                    className="w-full text-[11px] text-slate-300 file:mr-3 file:rounded-md file:border-0 file:bg-sky-500/10 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:uppercase file:tracking-[0.12em] file:text-sky-200 hover:file:bg-sky-500/20"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 px-4 py-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] text-slate-950 shadow-md shadow-cyan-500/30 transition-all hover:scale-105 active:scale-95"
+                >
+                  Apply Now
+                  <ArrowRight size={14} strokeWidth={3} />
+                </button>
+
+                <p className="mt-1.5 text-[11px] text-slate-400">
+                  Alternatively, email your resume to{" "}
+                  <span className="font-medium text-sky-300">
+                    <a href="mailto:hr@risevo.in">hr@risevo.in</a>
+                  </span>
+                  .
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

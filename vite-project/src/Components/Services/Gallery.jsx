@@ -1,4 +1,3 @@
-// src/Components/Gallery/Gallery.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
@@ -101,30 +100,64 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden bg-[#F5F7FB] py-16 sm:py-20 lg:py-24"
+      className="
+        relative overflow-hidden 
+        bg-[#F5F7FB]
+        pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28
+      "
     >
-      {/* Soft background accents */}
+      {/* Soft background accents - adjusted */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-sky-200/60 blur-3xl" />
+        <div className="absolute -top-10 -left-24 h-64 w-64 rounded-full bg-sky-200/60 blur-3xl" />
         <div className="absolute bottom-[-100px] right-[-80px] h-72 w-72 rounded-full bg-amber-200/60 blur-3xl" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        {/* Back to Home button */}
+        <div className="mb-8 sm:mb-10 flex items-center justify-between pt-2 sm:pt-4">
+          <motion.a
+            href="/"
+            initial={{ opacity: 0, x: -24, y: -8 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="
+              group inline-flex items-center gap-2
+              rounded-full border border-slate-200
+              bg-white/80 px-3.5 py-1.5 sm:px-4 sm:py-2
+              text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em]
+              text-slate-700 shadow-sm shadow-slate-300/60 backdrop-blur-sm
+              hover:border-slate-300 hover:shadow-md
+            "
+          >
+            <span
+              className="
+                flex h-6 w-6 items-center justify-center
+                rounded-full bg-slate-900 text-white
+                transition-transform duration-300
+                group-hover:-translate-x-0.5
+              "
+            >
+              <FiArrowRight className="h-3.5 w-3.5 rotate-180" />
+            </span>
+            <span>Back to Home</span>
+          </motion.a>
+        </div>
+
         {/* Heading */}
         <motion.div
           variants={fadeUp(0)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-3xl mx-auto"
+          className="text-center max-w-3xl mx-auto space-y-4 pt-2 sm:pt-4"
         >
           <p className="inline-flex items-center justify-center rounded-full border border-sky-200/70 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-sky-900">
             PROJECT GALLERY
           </p>
-          <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Work Done With Responsibility, From The Heart
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            WORK DONE WITH RESPONSIBILITY, FROM THE HEART
           </h2>
-          <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
+          <p className="text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
             Every Risevo project is handled with{" "}
             <span className="font-semibold text-slate-900">responsibility</span>
             , completed with{" "}
@@ -143,21 +176,24 @@ const Gallery = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="
-            mt-10
-            grid gap-5
+            mt-16 sm:mt-20
+            grid gap-5 sm:gap-6
             sm:grid-cols-2
             lg:grid-cols-3
           "
         >
-          {photos.map((item) => (
+          {photos.map((item, index) => (
             <motion.article
               key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.05 }}
               whileHover={{
                 y: -6,
                 boxShadow: "0 24px 70px rgba(15,23,42,0.25)",
               }}
               className="
-                group flex flex-col overflow-hidden
+                group flex flex-col overflow-hidden pt-2
                 rounded-2xl bg-white
                 border border-slate-200/80
                 shadow-sm
@@ -189,9 +225,9 @@ const Gallery = () => {
               </div>
 
               {/* Text block */}
-              <div className="px-3.5 sm:px-4 py-3 sm:py-3.5">
+              <div className="px-3.5 sm:px-4 py-4 sm:py-5">
                 <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">
-                  {item.desc}
+                  Real project execution captured on site.
                 </p>
               </div>
             </motion.article>

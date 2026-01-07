@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import logo from "../../images/logo.png";
 
 const textVariants = {
@@ -17,16 +17,42 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#F5F7FB] py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-[#F5F7FB] pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 lg:pb-24"
     >
+      {/* Back to Home Button - Page content mein */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-8"
+      >
+        <motion.a
+          href="/"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="
+            inline-flex items-center gap-2
+            rounded-full bg-white/95 backdrop-blur-xl px-4 py-2.5
+            text-sm font-semibold text-slate-900 shadow-xl shadow-black/20
+            border border-slate-200/80 hover:bg-white hover:shadow-2xl
+            transition-all duration-300
+            lg:px-5 lg:py-3
+          "
+        >
+          <FiArrowLeft className="h-4 w-4 lg:h-5 lg:w-5" />
+          <span className="hidden sm:inline">Back to Home</span>
+        </motion.a>
+      </motion.div>
+
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-28 -left-32 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl" />
+        <div className="absolute -top-20 -left-32 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl" />
         <div className="absolute bottom-[-120px] right-[-120px] h-80 w-80 rounded-full bg-amber-200/80 blur-3xl" />
       </div>
 
+      {/* Main Content */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
           {/* Text side */}
           <motion.div
             variants={textVariants}
@@ -39,12 +65,12 @@ const About = () => {
               ABOUT THE COMPANY
             </p>
 
-            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              RISEVO PROJECT &amp; DEVELOPERS
+            <h2 className="mt-6 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              RISEVO PROJECT & DEVELOPERS
             </h2>
 
-            <p className="mt-4 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
-              Risevo Project &amp; Developers is a professionally managed
+            <p className="mt-6 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
+              Risevo Project & Developers is a professionally managed
               civil construction company with deep expertise across{" "}
               <span className="font-semibold text-slate-900">
                 residential, commercial and infrastructure projects
@@ -53,7 +79,7 @@ const About = () => {
               adhere to the highest standards of quality and reliability.
             </p>
 
-            <p className="mt-3 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
+            <p className="mt-4 text-[13px] sm:text-[15px] text-slate-600 leading-relaxed">
               Our reputation is built on an unwavering commitment to{" "}
               <span className="font-semibold text-[#F5C041]">
                 superior craftsmanship, robust safety practices
@@ -64,7 +90,7 @@ const About = () => {
             </p>
 
             {/* CTAs */}
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               {/* Leadership CTA */}
               <motion.a
                 href="/leadership"
@@ -89,7 +115,7 @@ const About = () => {
                 </span>
               </motion.a>
 
-              {/* NEW: Foundation CTA */}
+              {/* Foundation CTA */}
               <motion.a
                 href="/foundation"
                 whileHover={{ x: 4 }}
