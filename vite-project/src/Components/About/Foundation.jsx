@@ -64,9 +64,7 @@ const Foundation = () => {
               <span className="rounded-full border border-slate-600/60 bg-slate-900/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.20em] text-slate-100">
                 EDUCATION • RELIEF • COMMUNITY RESILIENCE
               </span>
-              <span className="rounded-full border border-orange-400/60 bg-orange-500/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.20em] text-orange-50">
-                FLOOD & DISASTER RESPONSE
-              </span>
+             
             </div>
           </div>
 
