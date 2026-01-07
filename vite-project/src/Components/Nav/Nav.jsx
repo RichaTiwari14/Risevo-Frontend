@@ -25,14 +25,12 @@ const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-gradient-to-b from-black/95 to-black/80 backdrop-blur-xl">
-      {/* HEADER HEIGHT BADA (desktop par zyada) */}
       <div className="mx-auto flex h-24 sm:h-24 lg:h-32 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-4 flex-shrink-0">
-          <div className="relative group">
+        {/* 🎯 LOGO SECTION - LEFT SHIFTED */}
+        <Link to="/" className="flex items-center gap-3 flex-shrink-0 mr-2 lg:mr-4">
+          <div className="relative group -ml-1 lg:-ml-2">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300 scale-110" />
 
-            {/* YAHAN LOGO KO AUR BADA KIYA GAYA */}
             <div className="relative h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 rounded-3xl border-2 border-amber-400/70 overflow-hidden bg-gradient-to-br from-black via-slate-900 to-black shadow-xl shadow-amber-500/40 group-hover:shadow-amber-400/70 transition-all duration-300">
               <img
                 src={logo}
@@ -43,8 +41,7 @@ const Header = () => {
             </div>
           </div>
 
-          {/* TEXT SIZE BHI BADA, PROPORTION MAINTAIN */}
-          <div className="flex flex-col leading-tight">
+          <div className="flex flex-col leading-tight -ml-1 lg:-ml-2">
             <p className="text-base sm:text-lg lg:text-2xl font-bold uppercase tracking-[0.18em] text-amber-400">
               RISEVO
             </p>
@@ -54,8 +51,8 @@ const Header = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 text-[13px]">
+        {/* Desktop Navigation - CENTERED */}
+        <nav className="hidden lg:flex items-center gap-1 mx-auto text-[13px] flex-1 max-w-4xl">
           <Link
             to="/"
             className="px-4 py-2 rounded-full text-white/80 hover:text-amber-300 hover:bg-white/5 transition-all duration-200"
@@ -159,17 +156,18 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Right Side: CTA + Mobile Menu */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* 🎯 CTA + MOBILE - RIGHT SHIFTED & PROMINENT */}
+        <div className="flex items-center gap-3 ml-4 lg:ml-6">
           <Link
             to="/contact"
             className="
               hidden md:inline-flex items-center gap-1.5
               rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-sky-600
-              px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em]
-              text-white shadow-md shadow-blue-500/40
+              px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em]
+              text-white shadow-xl shadow-blue-500/50
               transition-all duration-200
               hover:shadow-blue-400/70 hover:scale-105 active:scale-95
+              ring-2 ring-sky-400/30 hover:ring-sky-400/50
             "
           >
             CONTACT
@@ -179,15 +177,15 @@ const Header = () => {
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/40 text-amber-300 hover:bg-white/5 transition-all duration-200"
+            className="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-amber-400/50 text-amber-300 hover:bg-white/10 hover:border-amber-400 hover:shadow-amber-400/30 transition-all duration-200"
             aria-label="Toggle navigation"
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - SAME */}
       {menuOpen && (
         <div className="lg:hidden w-full bg-black/98 border-t border-amber-400/20 backdrop-blur-xl max-h-[calc(100vh-6.5rem)] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-300">
           <nav className="mx-auto max-w-6xl px-4 sm:px-6 py-4 space-y-2 text-sm">
@@ -199,7 +197,6 @@ const Header = () => {
               Home
             </Link>
 
-            {/* Mobile Services */}
             <div className="border-b border-white/10">
               <button
                 onClick={() => setMobileServicesOpen((prev) => !prev)}
@@ -229,43 +226,23 @@ const Header = () => {
               )}
             </div>
 
-            <Link
-              to="/about"
-              onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all"
-            >
+            <Link to="/about" onClick={closeMenu} className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all">
               About
             </Link>
 
-            <Link
-              to="/foundation"
-              onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all"
-            >
+            <Link to="/foundation" onClick={closeMenu} className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all">
               Foundation
             </Link>
 
-            <Link
-              to="/leadership"
-              onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all"
-            >
+            <Link to="/leadership" onClick={closeMenu} className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all">
               Director
             </Link>
 
-            <Link
-              to="/gallery"
-              onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all"
-            >
+            <Link to="/gallery" onClick={closeMenu} className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all">
               Gallery
             </Link>
 
-            <Link
-              to="/careers"
-              onClick={closeMenu}
-              className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all"
-            >
+            <Link to="/careers" onClick={closeMenu} className="block px-4 py-2.5 rounded-xl text-white/80 hover:text-amber-300 hover:bg-white/5 border-b border-white/10 transition-all">
               Careers
             </Link>
 

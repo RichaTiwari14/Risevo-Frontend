@@ -1,8 +1,9 @@
-// Next.js app router use kar rahe ho to top pe ye line laga dena:
-// 'use client';
+'use client';
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Briefcase, MapPin, Clock, ArrowRight } from "lucide-react";
+import { FiArrowLeft } from "react-icons/fi";
 
 const positions = [
   {
@@ -26,9 +27,7 @@ const positions = [
 ];
 
 const CareersSection = () => {
-  // job list ke liye filter
   const [filterJob, setFilterJob] = useState("all");
-  // form ke career select ke liye
   const [formCareer, setFormCareer] = useState("");
 
   const visiblePositions =
@@ -39,30 +38,46 @@ const CareersSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-
-    // yahan Django backend/API ko POST karo:
-    // fetch("/api/job-applications/", {
-    //   method: "POST",
-    //   body: formData,
-    // }).then(...);
-
     alert("Form submitted (front-end). Backend se connect yahan karo.");
   };
 
   return (
     <section
       id="careers"
-      className="relative overflow-hidden bg-[#020617] py-12 sm:py-16 lg:py-20"
+      className="relative overflow-hidden bg-[#020617] pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20"
     >
       {/* Background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/12 blur-3xl" />
+        <div className="absolute -top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/12 blur-3xl" />
         <div className="absolute -bottom-40 -right-10 h-72 w-72 rounded-full bg-sky-500/12 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        {/* Back to Home - FIXED BADHIYA SA */}
+        <div className="mb-6 sm:mb-8 flex items-center justify-between pt-2 sm:pt-3">
+          <motion.a
+            href="/"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="
+              group inline-flex items-center gap-1.5
+              rounded-full border border-sky-400/60
+              bg-sky-500/10 px-3 py-1.5
+              text-xs font-semibold uppercase tracking-[0.2em]
+              text-sky-100 hover:text-white
+              hover:border-sky-400 hover:bg-sky-500/20
+              shadow-md hover:shadow-lg
+              transition-all duration-200 backdrop-blur-sm
+            "
+          >
+            <FiArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Back</span>
+          </motion.a>
+        </div>
+
         {/* Heading center me */}
-        <div className="max-w-3xl mx-auto space-y-3 mb-7 sm:mb-8 text-center">
+        <div className="max-w-3xl mx-auto space-y-3 mb-7 sm:mb-8 text-center pt-2 sm:pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-400">
             Careers
           </p>
@@ -81,13 +96,12 @@ const CareersSection = () => {
             on-ground execution.
           </p>
 
-          {/* Small pills center me */}
           <div className="mt-2 flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs">
             <span className="rounded-full border border-cyan-400/25 bg-cyan-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
               On-site project roles
             </span>
             <span className="rounded-full border border-sky-400/25 bg-sky-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
-              Design &amp; engineering
+              Design & engineering
             </span>
             <span className="rounded-full border border-emerald-400/25 bg-emerald-500/5 px-3 py-1 uppercase tracking-[0.18em] text-sky-100/90">
               Project management
@@ -95,11 +109,10 @@ const CareersSection = () => {
           </div>
         </div>
 
-        {/* Heading ke baad: pehle jobs card, phir form */}
         <div className="space-y-6 lg:space-y-7">
           {/* JOBS CARD */}
           <div className="w-full">
-            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)]">
+            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)] pt-3">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-5">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-50">
@@ -117,7 +130,6 @@ const CareersSection = () => {
                     <span>Now Hiring</span>
                   </div>
 
-                  {/* Dropdown filter */}
                   <select
                     value={filterJob}
                     onChange={(e) => setFilterJob(e.target.value)}
@@ -137,7 +149,7 @@ const CareersSection = () => {
                 {visiblePositions.map((job) => (
                   <div
                     key={job.title}
-                    className="group rounded-2xl border border-sky-500/15 bg-slate-900/40 hover:bg-slate-900/70 transition-all duration-200 px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col gap-2 sm:gap-2.5"
+                    className="group rounded-2xl border border-sky-500/15 bg-slate-900/40 hover:bg-slate-900/70 transition-all duration-200 px-4 py-3 sm:px-5 sm:py-3.5 flex flex-col gap-2 sm:gap-2.5 pt-2"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <h4 className="text-sm sm:text-base font-semibold text-slate-50">
@@ -164,7 +176,6 @@ const CareersSection = () => {
                         Click apply to pre-fill the form for this role and
                         submit your details.
                       </p>
-                      
                     </div>
                   </div>
                 ))}
@@ -180,26 +191,18 @@ const CareersSection = () => {
 
           {/* FORM CARD */}
           <div className="w-full">
-            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)] space-y-4">
+            <div className="rounded-2xl border border-sky-500/25 bg-[#020d1f]/90 backdrop-blur-xl p-4 sm:p-5 lg:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.85)] space-y-4 pt-3">
               <h3 className="text-base sm:text-lg font-semibold text-slate-50">
                 Job Application
               </h3>
               <p className="text-sm text-slate-300/85 leading-relaxed">
                 Fill in your details to apply. Our HR team will review your
-                application and contact you if there&apos;s a match.
+                application and contact you if there's a match.
               </p>
 
-              <form
-                className="space-y-3"
-                onSubmit={handleSubmit}
-                encType="multipart/form-data"
-              >
-                {/* career (ForeignKey) */}
+              <form className="space-y-3" onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="space-y-1.5">
-                  <label
-                    htmlFor="career"
-                    className="text-xs font-medium text-slate-200"
-                  >
+                  <label htmlFor="career" className="text-xs font-medium text-slate-200">
                     Position (Career)
                   </label>
                   <select
@@ -219,13 +222,9 @@ const CareersSection = () => {
                   </select>
                 </div>
 
-                {/* name + email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1.5">
-                    <label
-                      htmlFor="name"
-                      className="text-xs font-medium text-slate-200"
-                    >
+                    <label htmlFor="name" className="text-xs font-medium text-slate-200">
                       Full Name
                     </label>
                     <input
@@ -239,10 +238,7 @@ const CareersSection = () => {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label
-                      htmlFor="email"
-                      className="text-xs font-medium text-slate-200"
-                    >
+                    <label htmlFor="email" className="text-xs font-medium text-slate-200">
                       Email
                     </label>
                     <input
@@ -256,12 +252,8 @@ const CareersSection = () => {
                   </div>
                 </div>
 
-                {/* contact_no */}
                 <div className="space-y-1.5">
-                  <label
-                    htmlFor="contact_no"
-                    className="text-xs font-medium text-slate-200"
-                  >
+                  <label htmlFor="contact_no" className="text-xs font-medium text-slate-200">
                     Contact Number
                   </label>
                   <input
@@ -274,12 +266,8 @@ const CareersSection = () => {
                   />
                 </div>
 
-                {/* cover_letter */}
                 <div className="space-y-1.5">
-                  <label
-                    htmlFor="cover_letter"
-                    className="text-xs font-medium text-slate-200"
-                  >
+                  <label htmlFor="cover_letter" className="text-xs font-medium text-slate-200">
                     Cover Letter
                   </label>
                   <textarea
@@ -292,12 +280,8 @@ const CareersSection = () => {
                   />
                 </div>
 
-                {/* resume (FileField) */}
                 <div className="space-y-1.5">
-                  <label
-                    htmlFor="resume"
-                    className="text-xs font-medium text-slate-200"
-                  >
+                  <label htmlFor="resume" className="text-xs font-medium text-slate-200">
                     Resume (PDF / DOC)
                   </label>
                   <input
@@ -321,7 +305,7 @@ const CareersSection = () => {
                 <p className="mt-1.5 text-[11px] text-slate-400">
                   Alternatively, email your resume to{" "}
                   <span className="font-medium text-sky-300">
-                    hr@risevo.in
+                    <a href="mailto:hr@risevo.in">hr@risevo.in</a>
                   </span>
                   .
                 </p>

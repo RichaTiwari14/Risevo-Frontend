@@ -1,4 +1,3 @@
-// src/Components/Services/Turnkey.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,9 +9,8 @@ import {
   FiArrowLeft,
 } from "react-icons/fi";
 
-// 👇 Local images
-import turnkeyTopImg from "../../images/d.jpeg";  // HERO ke niche wali image
-import turnkeyBottomImg from "../../images/e.jpeg"; // niche / footer ke paas wali image
+import turnkeyTopImg from "../../images/d.jpeg";
+import turnkeyBottomImg from "../../images/e.jpeg";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -30,13 +28,13 @@ const Turnkey = () => {
       className="
         relative overflow-hidden
         bg-[#f7fafc]
-        py-20 sm:py-24 lg:py-28
+        pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28
       "
     >
-      {/* Textured + soft animated background */}
+      {/* Textured + soft animated background - adjusted */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl"
+          className="absolute -top-10 -left-24 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl"
           animate={{ y: [0, -18, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -63,9 +61,9 @@ const Turnkey = () => {
         />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {/* Back to Home button */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-8 sm:mb-10 flex items-center justify-between pt-2 sm:pt-4">
           <motion.a
             href="/"
             initial={{ opacity: 0, x: -24, y: -8 }}
@@ -74,10 +72,10 @@ const Turnkey = () => {
             className="
               group inline-flex items-center gap-2
               rounded-full border border-slate-200
-              bg-white/80 px-3.5 py-1.5
+              bg-white/80 px-3.5 py-1.5 sm:px-4 sm:py-2
               text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em]
               text-slate-700 shadow-sm shadow-slate-300/60 backdrop-blur-sm
-              hover:border-slate-300
+              hover:border-slate-300 hover:shadow-md
             "
           >
             <span
@@ -100,7 +98,7 @@ const Turnkey = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-5 pt-2 sm:pt-4"
         >
           <p className="inline-flex items-center justify-center rounded-full border border-sky-200/80 bg-white/90 px-4 py-1 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-sky-800 shadow-sm">
             TURNKEY PROJECT DELIVERY
@@ -124,56 +122,56 @@ const Turnkey = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
-          className="mt-8 grid gap-4 sm:grid-cols-3 text-xs sm:text-sm"
+          className="mt-12 sm:mt-14 grid gap-5 sm:gap-6 sm:grid-cols-3 text-xs sm:text-sm"
         >
-          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-sky-200 px-4 py-3 shadow-sm">
-            <div className="rounded-xl bg-sky-50 p-2 text-sky-700 border border-sky-200">
+          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-sky-200 px-5 sm:px-6 py-4 sm:py-5 shadow-sm pt-2">
+            <div className="rounded-xl bg-sky-50 p-2.5 text-sky-700 border border-sky-200">
               <FiPackage className="h-4 w-4" />
             </div>
             <div>
               <p className="font-semibold text-slate-900 uppercase tracking-[0.12em]">
                 SINGLE CONTRACT
               </p>
-              <p className="text-slate-600">
+              <p className="mt-1 text-slate-600">
                 One contract, one team – no fragmented responsibilities.
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-amber-200 px-4 py-3 shadow-sm">
-            <div className="rounded-xl bg-amber-50 p-2 text-amber-700 border border-amber-200">
+          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-amber-200 px-5 sm:px-6 py-4 sm:py-5 shadow-sm pt-2">
+            <div className="rounded-xl bg-amber-50 p-2.5 text-amber-700 border border-amber-200">
               <FiCalendar className="h-4 w-4" />
             </div>
             <div>
               <p className="font-semibold text-slate-900 uppercase tracking-[0.12em]">
                 CONTROLLED TIMELINES
               </p>
-              <p className="text-slate-600">
+              <p className="mt-1 text-slate-600">
                 Defined milestones and progress tracking from day one.
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-emerald-200 px-4 py-3 shadow-sm">
-            <div className="rounded-xl bg-emerald-50 p-2 text-emerald-700 border border-emerald-200">
+          <div className="flex items-center gap-3 rounded-2xl bg-white/95 border border-emerald-200 px-5 sm:px-6 py-4 sm:py-5 shadow-sm pt-2">
+            <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-700 border border-emerald-200">
               <FiCheckSquare className="h-4 w-4" />
             </div>
             <div>
               <p className="font-semibold text-slate-900 uppercase tracking-[0.12em]">
-                QUALITY &amp; COORDINATION
+                QUALITY & COORDINATION
               </p>
-              <p className="text-slate-600">
+              <p className="mt-1 text-slate-600">
                 Structure, services and finishes all aligned under one plan.
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* TOP IMAGE – d.jpeg (HERO ke baad, cards se pehle) */}
+        {/* TOP IMAGE */}
         <motion.div
           variants={fadeUp(0.18)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-10 max-w-5xl mx-auto"
+          className="mt-14 sm:mt-16 max-w-5xl mx-auto"
         >
           <div
             className="
@@ -185,7 +183,7 @@ const Turnkey = () => {
             <img
               src={turnkeyTopImg}
               alt="Turnkey site execution with coordinated trades"
-              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
               loading="lazy"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
@@ -207,7 +205,7 @@ const Turnkey = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-14 space-y-7 sm:space-y-8"
+          className="mt-16 sm:mt-20 space-y-8 sm:space-y-10"
         >
           {/* Turnkey for Homes */}
           <motion.article
@@ -217,10 +215,10 @@ const Turnkey = () => {
               boxShadow: "0 26px 90px rgba(15,23,42,0.2)",
             }}
             className="
-              relative rounded-3xl bg-white/98
+              relative rounded-3xl bg-white/98 pt-4
               border border-sky-200
               shadow-[0_20px_70px_rgba(15,23,42,0.14)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -231,7 +229,7 @@ const Turnkey = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-sky-800">
-                  TURNKEY FOR HOMES &amp; VILLAS
+                  TURNKEY FOR HOMES & VILLAS
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
                   COMPLETE DELIVERY FROM PLANS TO POSSESSION
@@ -259,10 +257,10 @@ const Turnkey = () => {
               boxShadow: "0 26px 90px rgba(15,23,42,0.2)",
             }}
             className="
-              relative rounded-3xl bg-white/98
+              relative rounded-3xl bg-white/98 pt-4
               border border-indigo-200
               shadow-[0_20px_70px_rgba(15,23,42,0.14)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -276,7 +274,7 @@ const Turnkey = () => {
                   TURNKEY FOR COMMERCIAL SPACES
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
-                  SHELL, CORE &amp; FIT‑OUT READY DELIVERIES
+                  SHELL, CORE & FIT‑OUT READY DELIVERIES
                 </h2>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                   For offices, retail and mixed‑use blocks, we execute the
@@ -300,10 +298,10 @@ const Turnkey = () => {
               boxShadow: "0 26px 90px rgba(15,23,42,0.2)",
             }}
             className="
-              relative rounded-3xl bg-white/98
+              relative rounded-3xl bg-white/98 pt-4
               border border-emerald-200
               shadow-[0_20px_70px_rgba(15,23,42,0.14)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -314,7 +312,7 @@ const Turnkey = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800">
-                  TURNKEY INTERIORS &amp; FINISHING
+                  TURNKEY INTERIORS & FINISHING
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
                   FROM CIVIL SHELL TO COMPLETE INTERIOR HANDOVER
@@ -334,13 +332,13 @@ const Turnkey = () => {
           </motion.article>
         </motion.div>
 
-        {/* BOTTOM IMAGE – e.jpeg (cards ke baad, process se pehle) */}
+        {/* BOTTOM IMAGE */}
         <motion.div
           variants={fadeUp(0.3)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-14 max-w-5xl mx-auto"
+          className="mt-14 sm:mt-16 max-w-5xl mx-auto"
         >
           <div
             className="
@@ -352,7 +350,7 @@ const Turnkey = () => {
             <img
               src={turnkeyBottomImg}
               alt="Completed turnkey project ready for handover"
-              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-[1200ms] ease-out hover:scale-105"
               loading="lazy"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
@@ -375,9 +373,9 @@ const Turnkey = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-16 space-y-6"
+          className="mt-20 sm:mt-24 space-y-6"
         >
-          <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="text-center max-w-3xl mx-auto space-y-3 pt-4 sm:pt-6">
             <h3 className="text-base sm:text-xl font-semibold text-slate-900 uppercase tracking-[0.12em]">
               TURNKEY DELIVERY WORKFLOW
             </h3>
@@ -387,21 +385,21 @@ const Turnkey = () => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-4 text-[13px] sm:text-sm">
+          <div className="grid gap-5 sm:gap-6 sm:grid-cols-4 text-[13px] sm:text-sm">
             {[
               {
                 step: "01",
-                title: "BRIEF &amp; TARGETS",
+                title: "BRIEF & TARGETS",
                 text: "We align on scope, budget band, timelines and performance requirements before locking a turnkey brief.",
               },
               {
                 step: "02",
-                title: "DESIGN &amp; COORDINATION",
+                title: "DESIGN & COORDINATION",
                 text: "Architectural, structural and MEP drawings are coordinated, so site execution is smooth and clash‑free.",
               },
               {
                 step: "03",
-                title: "EXECUTION &amp; TRACKING",
+                title: "EXECUTION & TRACKING",
                 text: "All trades – civil, services, finishes – are managed under one schedule with stage‑wise reporting.",
               },
               {
@@ -416,7 +414,7 @@ const Turnkey = () => {
                   y: -4,
                   boxShadow: "0 18px 45px rgba(15,23,42,0.25)",
                 }}
-                className="relative rounded-2xl border border-slate-200 bg-white/95 p-4 sm:p-5"
+                className="relative rounded-2xl border border-slate-200 bg-white/95 p-5 sm:p-6 pt-3"
               >
                 <div className="flex items-center gap-2 text-slate-700 mb-1">
                   <FiCheckSquare className="h-4 w-4 text-emerald-500" />
@@ -424,14 +422,12 @@ const Turnkey = () => {
                     STEP {item.step}
                   </p>
                 </div>
-                <h4
-                  className="mt-1 font-semibold text-slate-900 uppercase"
-                  dangerouslySetInnerHTML={{ __html: item.title }}
-                />
-                <p
-                  className="mt-1.5 text-slate-600 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: item.text }}
-                />
+                <h4 className="mt-1 font-semibold text-slate-900 uppercase">
+                  {item.title}
+                </h4>
+                <p className="mt-1.5 text-slate-600 leading-relaxed">
+                  {item.text}
+                </p>
               </motion.div>
             ))}
           </div>

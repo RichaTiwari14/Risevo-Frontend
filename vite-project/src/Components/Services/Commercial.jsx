@@ -1,4 +1,3 @@
-// src/Components/Commercial/Commercial.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -11,8 +10,7 @@ import {
 } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 
-// 👇 Local images
-import underConstructionImg from "../../images/commercial.jpg"; // header ke paas wali image
+import underConstructionImg from "../../images/commercial.jpg";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -30,13 +28,13 @@ const Commercial = () => {
       className="
         relative overflow-hidden
         bg-[#f5f7fb]
-        py-20 sm:py-24 lg:py-28
+        pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28
       "
     >
-      {/* Background */}
+      {/* Background - adjusted */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl"
+          className="absolute -top-10 -left-24 h-72 w-72 rounded-full bg-sky-200/80 blur-3xl"
           animate={{ x: [0, 26, 0], y: [0, -12, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -63,9 +61,9 @@ const Commercial = () => {
         />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {/* Back to Home */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-8 sm:mb-10 flex items-center justify-between pt-2 sm:pt-4">
           <motion.a
             href="/"
             initial={{ opacity: 0, x: -24, y: -8 }}
@@ -74,10 +72,10 @@ const Commercial = () => {
             className="
               group inline-flex items-center gap-2
               rounded-full border border-slate-200
-              bg-white/80 px-3.5 py-1.5
+              bg-white/80 px-3.5 py-1.5 sm:px-4 sm:py-2
               text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em]
               text-slate-700 shadow-sm shadow-slate-300/60 backdrop-blur-sm
-              hover:border-slate-300
+              hover:border-slate-300 hover:shadow-md
             "
           >
             <span
@@ -94,25 +92,25 @@ const Commercial = () => {
           </motion.a>
         </div>
 
-        {/* HERO: text + top image (a.jpeg) */}
+        {/* HERO: text + top image */}
         <motion.div
           variants={fadeUp(0)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35 }}
           className="
-            grid gap-10
+            grid gap-10 sm:gap-12
             lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)]
             items-start
           "
         >
           {/* Text */}
-          <div className="space-y-5">
+          <div className="space-y-6">
             <p className="inline-flex items-center justify-center rounded-full border border-sky-300/70 bg-white/90 px-4 py-1 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-sky-900 shadow-sm">
               COMMERCIAL CONSTRUCTION
             </p>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">
-              OFFICE, RETAIL &amp; COMMERCIAL ASSETS{" "}
+              OFFICE, RETAIL & COMMERCIAL ASSETS{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-indigo-700 to-sky-500">
                 ENGINEERED FOR BUSINESS
               </span>
@@ -130,7 +128,7 @@ const Commercial = () => {
             </ul>
           </div>
 
-          {/* Top image: Under Construction (a.jpeg) */}
+          {/* Top image */}
           <motion.div
             variants={fadeUp(0.1)}
             className="space-y-4"
@@ -159,7 +157,7 @@ const Commercial = () => {
         </motion.div>
 
         {/* MAIN CARDS – COMMERCIAL TYPES */}
-        <div className="mt-16 space-y-8 sm:space-y-9">
+        <div className="mt-16 sm:mt-20 space-y-8 sm:space-y-10">
           {/* Offices */}
           <motion.article
             variants={fadeUp(0.15)}
@@ -167,10 +165,10 @@ const Commercial = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             className="
-              relative rounded-3xl bg-white
+              relative rounded-3xl bg-white pt-4
               border border-sky-200
               shadow-[0_20px_60px_rgba(15,23,42,0.16)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -185,7 +183,7 @@ const Commercial = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-sky-800">
-                  OFFICE BUILDINGS &amp; CORPORATE SPACES
+                  OFFICE BUILDINGS & CORPORATE SPACES
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
                   EFFICIENT, ADAPTABLE WORKPLACE INFRASTRUCTURE
@@ -212,10 +210,10 @@ const Commercial = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             className="
-              relative rounded-3xl bg-white
+              relative rounded-3xl bg-white pt-4
               border border-amber-200
               shadow-[0_20px_60px_rgba(15,23,42,0.16)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -230,7 +228,7 @@ const Commercial = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-amber-800">
-                  RETAIL &amp; HIGH‑STREET SHOWROOMS
+                  RETAIL & HIGH‑STREET SHOWROOMS
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
                   HIGH VISIBILITY, SMOOTH CUSTOMER MOVEMENT
@@ -256,10 +254,10 @@ const Commercial = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             className="
-              relative rounded-3xl bg-white
+              relative rounded-3xl bg-white pt-4
               border border-slate-200
               shadow-[0_20px_60px_rgba(15,23,42,0.16)]
-              px-6 py-6 sm:px-7 sm:py-7
+              px-6 py-7 sm:px-7 sm:py-8
               transform-gpu transition-all duration-300
             "
           >
@@ -274,20 +272,20 @@ const Commercial = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-slate-800">
-                  COMMERCIAL COMPLEXES &amp; BUSINESS PARKS
+                  COMMERCIAL COMPLEXES & BUSINESS PARKS
                 </p>
                 <h2 className="text-sm sm:text-lg md:text-xl font-semibold text-slate-900 uppercase tracking-tight">
                   MIXED‑USE DEVELOPMENTS WITH CLEAR ZONING
                 </h2>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                  Larger projects are zoned to separate offices, retail, F&amp;B,
+                  Larger projects are zoned to separate offices, retail, F&B,
                   parking and back‑of‑house activities, so daily operations,
                   safety and maintenance remain intuitive and manageable.
                 </p>
                 <ul className="pt-1 space-y-1.5 text-[12px] sm:text-sm text-slate-700">
                   <li>• Distinct access for visitors, staff and services</li>
                   <li>• Grouped service corridors, shafts and plant rooms</li>
-                  <li>• Operation &amp; maintenance workflow built into the layout</li>
+                  <li>• Operation & maintenance workflow built into the layout</li>
                 </ul>
               </div>
             </div>
@@ -300,9 +298,9 @@ const Commercial = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-16 space-y-6"
+          className="mt-20 sm:mt-24 space-y-6"
         >
-          <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="text-center max-w-3xl mx-auto space-y-3 pt-4 sm:pt-6">
             <h3 className="text-base sm:text-xl font-semibold text-slate-900 uppercase tracking-[0.12em]">
               HOW WE DELIVER COMMERCIAL PROJECTS
             </h3>
@@ -313,11 +311,11 @@ const Commercial = () => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-4 text-[13px] sm:text-sm">
+          <div className="grid gap-5 sm:gap-6 sm:grid-cols-4 text-[13px] sm:text-sm">
             {/* Step 1 */}
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 18px 45px rgba(15,23,42,0.25)" }}
-              className="relative rounded-2xl border border-sky-200 bg-white/95 p-4 sm:p-5"
+              className="relative rounded-2xl border border-sky-200 bg-white/95 p-5 sm:p-6 pt-3"
             >
               <div className="flex items-center gap-2 text-sky-700">
                 <FaProjectDiagram className="h-4 w-4" />
@@ -326,7 +324,7 @@ const Commercial = () => {
                 </p>
               </div>
               <h4 className="mt-2 font-semibold text-slate-900 uppercase">
-                BRIEF &amp; FEASIBILITY
+                BRIEF & FEASIBILITY
               </h4>
               <p className="mt-1.5 text-slate-600 leading-relaxed">
                 Business model, target users, area program, parking, norms and
@@ -337,7 +335,7 @@ const Commercial = () => {
             {/* Step 2 */}
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 18px 45px rgba(15,23,42,0.25)" }}
-              className="relative rounded-2xl border border-indigo-200 bg-white/95 p-4 sm:p-5"
+              className="relative rounded-2xl border border-indigo-200 bg-white/95 p-5 sm:p-6 pt-3"
             >
               <div className="flex items-center gap-2 text-indigo-700">
                 <FaBuilding className="h-4 w-4" />
@@ -346,7 +344,7 @@ const Commercial = () => {
                 </p>
               </div>
               <h4 className="mt-2 font-semibold text-slate-900 uppercase">
-                DESIGN &amp; COORDINATION
+                DESIGN & COORDINATION
               </h4>
               <p className="mt-1.5 text-slate-600 leading-relaxed">
                 Architectural, structural, MEP and fire drawings are developed
@@ -358,7 +356,7 @@ const Commercial = () => {
             {/* Step 3 */}
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 18px 45px rgba(15,23,42,0.25)" }}
-              className="relative rounded-2xl border border-emerald-200 bg-white/95 p-4 sm:p-5"
+              className="relative rounded-2xl border border-emerald-200 bg-white/95 p-5 sm:p-6 pt-3"
             >
               <div className="flex items-center gap-2 text-emerald-700">
                 <FaHardHat className="h-4 w-4" />
@@ -367,7 +365,7 @@ const Commercial = () => {
                 </p>
               </div>
               <h4 className="mt-2 font-semibold text-slate-900 uppercase">
-                EXECUTION &amp; SAFETY
+                EXECUTION & SAFETY
               </h4>
               <p className="mt-1.5 text-slate-600 leading-relaxed">
                 Civil, structural and services work are executed with site
@@ -379,7 +377,7 @@ const Commercial = () => {
             {/* Step 4 */}
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 18px 45px rgba(15,23,42,0.25)" }}
-              className="relative rounded-2xl border border-amber-200 bg-white/95 p-4 sm:p-5"
+              className="relative rounded-2xl border border-amber-200 bg-white/95 p-5 sm:p-6 pt-3"
             >
               <div className="flex items-center gap-2 text-amber-700">
                 <FaRegClock className="h-4 w-4" />
@@ -388,7 +386,7 @@ const Commercial = () => {
                 </p>
               </div>
               <h4 className="mt-2 font-semibold text-slate-900 uppercase">
-                FINISHING &amp; COMMISSIONING
+                FINISHING & COMMISSIONING
               </h4>
               <p className="mt-1.5 text-slate-600 leading-relaxed">
                 Finishes, service testing, snag removal and handover are aligned
@@ -398,8 +396,6 @@ const Commercial = () => {
             </motion.div>
           </div>
         </motion.div>
-
-        
       </div>
     </section>
   );

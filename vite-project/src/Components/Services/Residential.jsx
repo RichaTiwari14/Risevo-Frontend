@@ -1,9 +1,7 @@
-// src/Components/Residential/Residential.jsx
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FiHome, FiGrid, FiLayers, FiArrowLeft } from "react-icons/fi";
 
-// Yahan apne actual image path lagao
 import residence1 from "../../images/residence1.jpg";
 import residence2 from "../../images/residence2.jpg";
 
@@ -64,7 +62,7 @@ const Card3D = ({
 
       <motion.article
         className={`
-          relative rounded-3xl bg-white/98
+          relative rounded-3xl bg-white/98 pt-3
           border ${borderColor}
           shadow-[0_28px_90px_rgba(15,23,42,0.15)]
           p-5 sm:p-6 lg:p-7 transform-gpu
@@ -158,14 +156,14 @@ const Residential = () => {
       className="
         relative overflow-hidden
         bg-[#f7fafc]
-        py-20 sm:py-24 lg:py-28
+        pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28
       "
     >
-      {/* Textured + animated background */}
+      {/* Textured + animated background - adjusted */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* animated glows */}
         <motion.div
-          className="absolute -top-32 -left-20 h-72 w-72 rounded-full bg-sky-200/75 blur-3xl"
+          className="absolute -top-10 -left-20 h-72 w-72 rounded-full bg-sky-200/75 blur-3xl"
           animate={{ y: [0, -18, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -195,9 +193,9 @@ const Residential = () => {
         />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {/* Back to Home button */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-8 sm:mb-10 flex items-center justify-between pt-2 sm:pt-4">
           <motion.a
             href="/"
             initial={{ opacity: 0, x: -24, y: -8 }}
@@ -206,10 +204,10 @@ const Residential = () => {
             className="
               group inline-flex items-center gap-2
               rounded-full border border-slate-200
-              bg-white/80 px-3.5 py-1.5
+              bg-white/80 px-3.5 py-1.5 sm:px-4 sm:py-2
               text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em]
               text-slate-700 shadow-sm shadow-slate-300/60 backdrop-blur-sm
-              hover:border-slate-300
+              hover:border-slate-300 hover:shadow-md
             "
           >
             <span
@@ -232,13 +230,13 @@ const Residential = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-5 pt-2 sm:pt-4"
         >
           <p className="inline-flex items-center justify-center rounded-full border border-sky-200/80 bg-white/90 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-sky-800 shadow-sm">
             RESIDENTIAL CONSTRUCTION
           </p>
           <h1 className="mt-1 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">
-            PREMIUM HOMES, VILLAS &amp; APARTMENTS{" "}
+            PREMIUM HOMES, VILLAS & APARTMENTS{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-sky-700 to-amber-500">
               BUILT TO LAST
             </span>
@@ -250,13 +248,13 @@ const Residential = () => {
           </p>
         </motion.div>
 
-        {/* TOP IMAGE - CARDS KE UPAR */}
+        {/* TOP IMAGE */}
         <motion.div
           variants={fadeUp(0.15)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-10 max-w-4xl mx-auto"
+          className="mt-10 sm:mt-12 max-w-4xl mx-auto"
         >
           <div
             className="
@@ -272,12 +270,11 @@ const Residential = () => {
               loading="lazy"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-          
           </div>
         </motion.div>
 
-        {/* MAIN 3D CARDS (stacked) */}
-        <div className="mt-12 space-y-7 sm:space-y-8">
+        {/* MAIN 3D CARDS */}
+        <div className="mt-14 sm:mt-16 space-y-8 sm:space-y-10">
           <Card3D
             icon={FiHome}
             accentColor="#0f5fa8"
@@ -327,13 +324,13 @@ const Residential = () => {
           />
         </div>
 
-        {/* BOTTOM IMAGE - CARDS KE NICHE */}
+        {/* BOTTOM IMAGE */}
         <motion.div
           variants={fadeUp(0.25)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-12 sm:mt-14 max-w-4xl mx-auto"
+          className="mt-14 sm:mt-16 max-w-4xl mx-auto"
         >
           <div
             className="
@@ -349,22 +346,21 @@ const Residential = () => {
               loading="lazy"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-           
           </div>
         </motion.div>
 
-        {/* PROCESS – animated, more solid */}
+        {/* PROCESS SECTION */}
         <motion.div
           variants={fadeUp(0.4)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-14 sm:mt-16"
+          className="mt-20 sm:mt-24"
         >
-          <p className="text-xs sm:text-sm text-slate-500 uppercase tracking-[0.18em] mb-4">
+          <p className="text-xs sm:text-sm text-slate-500 uppercase tracking-[0.18em] mb-5 pt-4 sm:pt-6">
             HOW YOUR RESIDENTIAL PROJECT MOVES FROM IDEA TO REALITY
           </p>
-          <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-4 sm:gap-4">
+          <div className="space-y-5 sm:space-y-0 sm:grid sm:grid-cols-4 sm:gap-5">
             {processSteps.map((item, idx) => (
               <motion.div
                 key={item.step}
@@ -373,7 +369,7 @@ const Residential = () => {
                   scale: 1.02,
                   boxShadow: "0 22px 60px rgba(15,23,42,0.25)",
                 }}
-                className="relative rounded-2xl bg-white/95 border border-slate-200/80 p-4 sm:p-5 shadow-sm transform-gpu transition-transform duration-300"
+                className="relative rounded-2xl bg-white/95 border border-slate-200/80 p-5 sm:p-6 pt-3 shadow-sm transform-gpu transition-transform duration-300"
               >
                 {/* animated accent strip */}
                 <motion.div
