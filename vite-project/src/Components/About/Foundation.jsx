@@ -6,7 +6,6 @@ import {
   FiUsers,
   FiTarget,
   FiCheckCircle,
-  FiCloudRain,
   FiArrowLeft,
 } from "react-icons/fi";
 
@@ -18,7 +17,7 @@ import treeImg2 from "../../images/tree1.jpg";
 const Foundation = () => {
   return (
     <main className="relative overflow-hidden bg-slate-950 pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20">
-      {/* Background glow - adjusted */}
+      {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 -top-20 h-64 w-64 rounded-full bg-sky-500/20 blur-3xl" />
         <div className="absolute right-[-60px] top-32 h-72 w-72 rounded-full bg-sky-400/15 blur-3xl" />
@@ -26,8 +25,7 @@ const Foundation = () => {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
-        {/* Back to Home button - BADHIYA SA! */}
-        {/* Back to Home button - SIMPLE CHOTA */}
+        {/* Back to Home button */}
         <div className="mb-6 sm:mb-8 flex items-center justify-between pt-2 sm:pt-3">
           <motion.a
             href="/"
@@ -35,21 +33,20 @@ const Foundation = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="
-      group inline-flex items-center gap-1.5
-      rounded-full border border-sky-400/60
-      bg-sky-500/10 px-3 py-1.5
-      text-xs font-semibold uppercase tracking-[0.2em]
-      text-sky-100 hover:text-white
-      hover:border-sky-400 hover:bg-sky-500/20
-      shadow-md hover:shadow-lg
-      transition-all duration-200 backdrop-blur-sm
-    "
+              group inline-flex items-center gap-1.5
+              rounded-full border border-sky-400/60
+              bg-sky-500/10 px-3 py-1.5
+              text-xs font-semibold uppercase tracking-[0.2em]
+              text-sky-100 hover:text-white
+              hover:border-sky-400 hover:bg-sky-500/20
+              shadow-md hover:shadow-lg
+              transition-all duration-200 backdrop-blur-sm
+            "
           >
             <FiArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-0.5 transition-transform" />
             <span>Back</span>
           </motion.a>
         </div>
-
 
         {/* BREADCRUMB */}
         <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-slate-400 pt-2 sm:pt-4">
@@ -61,11 +58,11 @@ const Foundation = () => {
           {/* LEFT: INTRO */}
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-sky-100">
-              WE SUPPORT COMMUNITIES DURING  CRISES • NATURAL DISASTERS
+              WE SUPPORT COMMUNITIES WITH TREES • FOOD • CARE
             </p>
 
             <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white uppercase">
-              A FOUNDATION THAT STANDS WITH COMMUNITIES IN EVERY CRISIS.
+              A FOUNDATION THAT CARES FOR PEOPLE AND THE ENVIRONMENT.
             </h1>
 
             <p className="mt-4 text-sm sm:text-base text-slate-200 leading-relaxed">
@@ -75,10 +72,10 @@ const Foundation = () => {
               defined share of revenue from every project is allocated to support{" "}
               <span className="font-semibold text-orange-200">
                 people and communities with genuine needs
-              </span>
-              — ranging from education and healthcare to urgent{" "}
+              </span>{" "}
+              — from education and healthcare to{" "}
               <span className="font-semibold text-sky-200">
-                disaster relief
+                tree plantation, food distribution and direct help for the underprivileged
               </span>
               .
             </p>
@@ -89,7 +86,7 @@ const Foundation = () => {
                 TRANSPARENT & ACCOUNTABLE GIVING
               </span>
               <span className="rounded-full border border-slate-600/60 bg-slate-900/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.20em] text-slate-100">
-                EDUCATION • RELIEF • COMMUNITY RESILIENCE
+                EDUCATION • FOOD • COMMUNITY CARE
               </span>
             </div>
           </div>
@@ -128,7 +125,7 @@ const Foundation = () => {
                 <span className="font-semibold text-orange-200">
                   direct, responsible support
                 </span>{" "}
-                for underprivileged individuals, families in crisis and
+                for underprivileged individuals, families and
                 vulnerable communities.
               </p>
               <p className="mt-3 text-[13px] sm:text-[14px] text-slate-200 leading-relaxed">
@@ -136,8 +133,8 @@ const Foundation = () => {
                 <span className="font-semibold text-sky-200">immediate relief</span>{" "}
                 where it is urgently required, and to build{" "}
                 <span className="font-semibold text-sky-200">long‑term dignity</span> and
-                stability wherever possible — through education, healthcare and essential
-                infrastructure.
+                stability wherever possible — through education, healthcare,
+                food support and essential infrastructure.
               </p>
 
               <ul className="mt-4 space-y-2.5 text-[13px] sm:text-[14px] text-slate-100">
@@ -150,8 +147,8 @@ const Foundation = () => {
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
                   <span>
-                    Rapid response during natural disasters and large‑scale
-                    emergencies.
+                    Regular initiatives for{" "}
+                    tree plantation, food distribution and other essential support.
                   </span>
                 </li>
                 <li className="flex gap-2">
@@ -208,7 +205,7 @@ const Foundation = () => {
               <p className="mt-5 text-[11px] sm:text-[12px] text-slate-400 leading-relaxed">
                 If you are aware of an{" "}
                 <span className="text-sky-300">
-                  individual, family or disaster‑affected community
+                  individual, family or community in need
                 </span>{" "}
                 requiring legitimate support, please reach out to the{" "}
                 <span className="text-orange-300 font-medium">
@@ -220,53 +217,53 @@ const Foundation = () => {
           </div>
         </section>
 
-        {/* Rest of the content remains exactly the same... */}
-        {/* FLOOD / DISASTER SECTION */}
+        {/* COMMUNITY SUPPORT SECTION */}
         <section className="mt-12 sm:mt-14">
           <div className="grid gap-8 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] items-center rounded-2xl border border-sky-900 bg-slate-900/80 px-5 sm:px-8 py-7 sm:py-8 shadow-xl shadow-black/40 pt-3">
-            {/* LEFT: FLOOD CONTENT */}
+            {/* LEFT: COMMUNITY SUPPORT CONTENT */}
             <div>
               <h3 className="mt-2 text-lg sm:text-xl font-semibold text-white uppercase">
                 ON‑GROUND COMMUNITY SUPPORT
               </h3>
               <p className="mt-3 text-[13px] sm:text-[14px] text-slate-100 leading-relaxed">
-                When  natural disasters affect a region, our first
-                priority is to reach the{" "}
+                Across the areas where we work, our first priority is to reach{" "}
                 <span className="font-semibold text-orange-200">
-                  most severely impacted families
-                </span>{" "}
-                as quickly and safely as possible. We work with local partners
-                and volunteers to deliver{" "}
-                <span className="font-semibold text-sky-200">
-                  immediate, practical and meaningful assistance
+                  people who struggle for basic needs
                 </span>
-                .
+                . We work with local partners and volunteers to provide{" "}
+                <span className="font-semibold text-sky-200">
+                  cooked meals, ration kits and practical, meaningful assistance
+                </span>{" "}
+                to underprivileged families and individuals.
               </p>
 
               <ul className="mt-3 space-y-1.5 text-[12px] sm:text-[13px] text-slate-100">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
-                  <span>Rapid assessment of impacted areas and priority needs.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
                   <span>
-                    Distribution of food, clean drinking water, clothing and
-                    hygiene kits.
+                    Regular food distribution and ration kits for
+                    underprivileged families.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
                   <span>
-                    Support for temporary shelter, basic bedding and essential
-                    household items.
+                    Meal drives for people living on the streets, in slums and
+                    labour settlements.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
                   <span>
-                    Follow‑up assistance for families as they begin to rebuild
-                    their homes and lives.
+                    Support with basic essentials such as clothing, hygiene
+                    items and medicines for those in urgent need.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
+                  <span>
+                    Focused help for the most vulnerable — including children,
+                    widows and the elderly.
                   </span>
                 </li>
               </ul>
@@ -277,7 +274,7 @@ const Foundation = () => {
               <div className="overflow-hidden rounded-xl border border-sky-900/60 bg-slate-950">
                 <img
                   src={donateImg2}
-                  alt="Risevo Foundation providing  disaster relief on the ground"
+                  alt="Risevo Foundation providing food and support to people in need"
                   className="h-48 w-full object-cover sm:h-56 md:h-60"
                   loading="lazy"
                 />
@@ -298,24 +295,23 @@ const Foundation = () => {
                 RESTORING THE ENVIRONMENT ALONGSIDE REBUILDING COMMUNITIES
               </h3>
               <p className="mt-3 text-[13px] sm:text-[14px] text-slate-100 leading-relaxed">
-                Natural disasters impact not only people and
-                infrastructure, but also the natural ecosystems around them. A
-                dedicated part of the{" "}
+                A healthy environment is essential for strong communities and
+                future generations. A dedicated part of the{" "}
                 <span className="font-semibold text-emerald-200">
                   Risevo Foundation&apos;s work
                 </span>{" "}
                 focuses on{" "}
                 <span className="font-semibold text-emerald-200">
-                  tree plantation and environmental restoration
+                  tree plantation and environmental care
                 </span>{" "}
-                in high‑risk and affected areas.
+                in and around the neighbourhoods we serve.
               </p>
               <ul className="mt-3 space-y-1.5 text-[12px] sm:text-[13px] text-slate-100">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   <span>
-                    Tree plantation drives around project locations and
-                    flood‑prone zones.
+                    Tree plantation drives around project locations, schools,
+                    public spaces and neighbourhoods.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -406,8 +402,8 @@ const Foundation = () => {
                 </div>
                 <p className="text-[11px] sm:text-[12px] text-slate-300 leading-relaxed">
                   We identify genuine cases through local references, verified
-                  partners, our internal teams and on‑ground information during
-                  crises.
+                  partners, our internal teams and on‑ground information from
+                  the communities we serve.
                 </p>
               </div>
 
@@ -440,8 +436,8 @@ const Foundation = () => {
                 </div>
                 <p className="text-[11px] sm:text-[12px] text-slate-300 leading-relaxed">
                   We provide focused assistance — such as education fees, medical
-                  aid, relief kits or financial support — based on the actual
-                  requirement.
+                  aid, food support, relief kits or financial help — based on
+                  the actual requirement.
                 </p>
               </div>
 
